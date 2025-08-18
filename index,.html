@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solara Hub | Premium Roblox Scripthub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d32f2f; /* Красный вместо фиолетового */
+            --secondary: #ff5252; /* Ярко-красный */
+            --accent: #ff9800; /* Оранжевый вместо красно-оранжевого */
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --light: #ffffff;
+            --gray: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(211, 47, 47, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 82, 82, 0.15) 0%, transparent 50%);
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255, 82, 82, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .btn {
+            position: relative;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            min-width: 220px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .btn-scriptblox {
+            background: linear-gradient(45deg, var(--primary), #e53935);
+        }
+
+        .btn-rscripts {
+            background: linear-gradient(45deg, #444, #666);
+            color: var(--dark);
+        }
+
+        .btn-discord {
+            background: linear-gradient(45deg, var(--secondary), #ff867c);
+        }
+
+        .btn-key {
+            background: linear-gradient(45deg, var(--accent), #ffb74d);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 4rem 0 2rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+            border-radius: 3px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            margin: 3rem auto;
+            perspective: 1000px;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-style: preserve-3d;
+        }
+
+        .partner-card {
+            min-width: 300px;
+            padding: 1.5rem;
+            margin: 0 1rem;
+            background: var(--gray);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .partner-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(255, 82, 82, 0.2);
+            border-color: rgba(255, 82, 82, 0.3);
+        }
+
+        .partner-img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+            transition: all 0.5s ease;
+        }
+
+        .partner-card:hover .partner-img {
+            filter: drop-shadow(0 10px 15px rgba(255, 82, 82, 0.3));
+        }
+
+        .partner-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            color: var(--light);
+            margin-top: 1rem;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--secondary);
+            transform: scale(1.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 5rem;
+            background: linear-gradient(to top, var(--darker), transparent);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 82, 82, 0.5), transparent);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-link {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3.5rem;
+            }
+            
+            .btn {
+                min-width: 100%;
+            }
+            
+            .partner-card {
+                min-width: 250px;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles-js"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="logo floating">Solara Hub</h1>
+            <p class="tagline">Premium Roblox Scripts & Exploits</p>
+        </header>
+        
+        <div class="buttons">
+            <a href="https://scriptblox.com/script/Universal-Script-Solara-Hub-415-Games-Keyless-Best-Scripthub-45360" class="btn btn-scriptblox">
+                <i class="fas fa-code"></i> We on ScriptBlox
+            </a>
+            <a href="https://rscripts.net/script/solara-hub-v3-340-games-TRdT" class="btn btn-rscripts">
+                <i class="fas fa-scroll"></i> We on RScripts
+            </a>
+            <a href="https://discord.gg/DPCKQRJmdF" class="btn btn-discord">
+                <i class="fab fa-discord"></i> Our Discord Server
+            </a>
+            <a href="get-key.html" class="btn btn-key">
+                <i class="fas fa-key"></i> Get Key
+            </a>
+        </div>
+        
+        <h2 class="section-title">Our Partners</h2>
+        
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/300x150/d32f2f/ffffff?text=Solara+Hub" alt="Solara Hub" class="partner-img">
+                    <div class="partner-name">Solara Hub</div>
+                </div>
+                
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/300x150/ff5252/ffffff?text=Partner+2" alt="Partner 2" class="partner-img">
+                    <div class="partner-name">Partner 2</div>
+                </div>
+                
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/300x150/ff9800/ffffff?text=Partner+3" alt="Partner 3" class="partner-img">
+                    <div class="partner-name">Partner 3</div>
+                </div>
+                
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/300x150/1a1a1a/ffffff?text=Partner+4" alt="Partner 4" class="partner-img">
+                    <div class="partner-name">Partner 4</div>
+                </div>
+                
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/300x150/d32f2f/ffffff?text=Partner+5" alt="Partner 5" class="partner-img">
+                    <div class="partner-name">Partner 5</div>
+                </div>
+                
+                <div class="partner-card">
+                    <img src="https://via.placeholder.com/300x150/ff5252/ffffff?text=Partner+6" alt="Partner 6" class="partner-img">
+                    <div class="partner-name">Partner 6</div>
+                </div>
+            </div>
+            
+            <div class="carousel-nav" id="carousel-nav">
+                <!-- Dots will be added by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        </div>
+        <p class="copyright">© 2025 Solara Hub. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles.js configuration with red colors
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": ["#d32f2f", "#ff5252", "#ff9800"] // Красные и оранжевые частицы
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ff5252", // Красные связи
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('carousel');
+            const carouselNav = document.getElementById('carousel-nav');
+            const cards = document.querySelectorAll('.partner-card');
+            const cardCount = cards.length;
+            let currentIndex = 0;
+            const cardsPerSlide = 3;
+            
+            // Create navigation dots
+            for (let i = 0; i < Math.ceil(cardCount / cardsPerSlide); i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('nav-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                });
+                carouselNav.appendChild(dot);
+            }
+            
+            function goToSlide(index) {
+                currentIndex = index;
+                const offset = -currentIndex * (100 / cardsPerSlide);
+                carousel.style.transform = `translateX(${offset}%)`;
+                
+                // Update active dot
+                document.querySelectorAll('.nav-dot').forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+            
+            // Auto-rotate carousel
+            setInterval(() => {
+                const nextIndex = (currentIndex + 1) % Math.ceil(cardCount / cardsPerSlide);
+                goToSlide(nextIndex);
+            }, 5000);
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                goToSlide(currentIndex);
+            });
+        });
+    </script>
+</body>
+</html>
