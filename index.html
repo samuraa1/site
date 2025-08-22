@@ -8,9 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #d32f2f; /* Красный вместо фиолетового */
-            --secondary: #ff5252; /* Ярко-красный */
-            --accent: #ff9800; /* Оранжевый вместо красно-оранжевого */
+            --primary: #d32f2f;
+            --secondary: #ff5252;
+            --accent: #ff9800;
             --dark: #0a0a0a;
             --darker: #050505;
             --light: #ffffff;
@@ -316,7 +316,6 @@
             }
         }
 
-        /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
@@ -342,7 +341,7 @@
     <div class="container">
         <header>
             <h1 class="logo floating">Solara Hub</h1>
-            <p class="tagline">Premium Roblox Scripts & Exploits</p>
+            <p class="tagline">Premium Roblox Scripts For All Popular Games</p>
         </header>
         
         <div class="buttons">
@@ -359,47 +358,6 @@
                 <i class="fas fa-key"></i> Get Key
             </a>
         </div>
-        
-        <h2 class="section-title">Our Partners</h2>
-        
-        <div class="carousel-container">
-            <div class="carousel" id="carousel">
-                <div class="partner-card">
-                    <img src="https://via.placeholder.com/300x150/d32f2f/ffffff?text=Solara+Hub" alt="Solara Hub" class="partner-img">
-                    <div class="partner-name">Solara Hub</div>
-                </div>
-                
-                <div class="partner-card">
-                    <img src="https://via.placeholder.com/300x150/ff5252/ffffff?text=Partner+2" alt="Partner 2" class="partner-img">
-                    <div class="partner-name">Partner 2</div>
-                </div>
-                
-                <div class="partner-card">
-                    <img src="https://via.placeholder.com/300x150/ff9800/ffffff?text=Partner+3" alt="Partner 3" class="partner-img">
-                    <div class="partner-name">Partner 3</div>
-                </div>
-                
-                <div class="partner-card">
-                    <img src="https://via.placeholder.com/300x150/1a1a1a/ffffff?text=Partner+4" alt="Partner 4" class="partner-img">
-                    <div class="partner-name">Partner 4</div>
-                </div>
-                
-                <div class="partner-card">
-                    <img src="https://via.placeholder.com/300x150/d32f2f/ffffff?text=Partner+5" alt="Partner 5" class="partner-img">
-                    <div class="partner-name">Partner 5</div>
-                </div>
-                
-                <div class="partner-card">
-                    <img src="https://via.placeholder.com/300x150/ff5252/ffffff?text=Partner+6" alt="Partner 6" class="partner-img">
-                    <div class="partner-name">Partner 6</div>
-                </div>
-            </div>
-            
-            <div class="carousel-nav" id="carousel-nav">
-                <!-- Dots will be added by JavaScript -->
-            </div>
-        </div>
-    </div>
     
     <footer>
         <div class="social-links">
@@ -413,7 +371,6 @@
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Particles.js configuration with red colors
         particlesJS("particles-js", {
             "particles": {
                 "number": {
@@ -424,7 +381,7 @@
                     }
                 },
                 "color": {
-                    "value": ["#d32f2f", "#ff5252", "#ff9800"] // Красные и оранжевые частицы
+                    "value": ["#d32f2f", "#ff5252", "#ff9800"]
                 },
                 "shape": {
                     "type": "circle",
@@ -459,7 +416,7 @@
                 "line_linked": {
                     "enable": true,
                     "distance": 150,
-                    "color": "#ff5252", // Красные связи
+                    "color": "#ff5252",
                     "opacity": 0.2,
                     "width": 1
                 },
@@ -520,7 +477,6 @@
             "retina_detect": true
         });
 
-        // Carousel functionality
         document.addEventListener('DOMContentLoaded', function() {
             const carousel = document.getElementById('carousel');
             const carouselNav = document.getElementById('carousel-nav');
@@ -529,7 +485,6 @@
             let currentIndex = 0;
             const cardsPerSlide = 3;
             
-            // Create navigation dots
             for (let i = 0; i < Math.ceil(cardCount / cardsPerSlide); i++) {
                 const dot = document.createElement('div');
                 dot.classList.add('nav-dot');
@@ -545,19 +500,16 @@
                 const offset = -currentIndex * (100 / cardsPerSlide);
                 carousel.style.transform = `translateX(${offset}%)`;
                 
-                // Update active dot
                 document.querySelectorAll('.nav-dot').forEach((dot, i) => {
                     dot.classList.toggle('active', i === index);
                 });
             }
             
-            // Auto-rotate carousel
             setInterval(() => {
                 const nextIndex = (currentIndex + 1) % Math.ceil(cardCount / cardsPerSlide);
                 goToSlide(nextIndex);
             }, 5000);
             
-            // Handle window resize
             window.addEventListener('resize', () => {
                 goToSlide(currentIndex);
             });
