@@ -163,25 +163,6 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-            border-radius: 3px;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.5s ease;
-        }
-
-        .logo:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
         .tagline {
             font-size: 1.4rem;
             color: rgba(255, 255, 255, 0.8);
@@ -570,12 +551,8 @@
             background: linear-gradient(45deg, #FF0000, #FF5E5E);
         }
 
-        .social-link.twitter:hover {
-            background: linear-gradient(45deg, #1DA1F2, #6AB8F6);
-        }
-
-        .social-link.tiktok:hover {
-            background: linear-gradient(45deg, #000000, #00f2ea, #ff0050);
+        .social-link.github:hover {
+            background: linear-gradient(45deg, #333, #6e5494);
         }
 
         .copyright {
@@ -735,12 +712,12 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">
+            <a href="#home" class="nav-logo">
                 <i class="fas fa-star"></i>
                 <span>Solara Hub</span>
             </a>
             <div class="nav-links">
-                <a href="#" class="nav-link">Home</a>
+                <a href="#home" class="nav-link">Home</a>
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#screenshot" class="nav-link">Screenshot</a>
                 <a href="#get-started" class="nav-link">Get Started</a>
@@ -753,9 +730,9 @@
     </nav>
     
     <div class="container">
-        <header>
+        <header id="home">
             <h1 class="logo floating">Solara Hub</h1>
-            <p class="tagline">The Ultimate Roblox Experience - Unleash the power of premium scripting with our advanced hub featuring 450+ games support and 1300+ scripts</p>
+            <p class="tagline">The Ultimate Roblox Experience - Unleash the power of top-tier scripting with our advanced hub featuring 450+ games support and 1300+ scripts</p>
         </header>
         
         <div class="buttons">
@@ -788,7 +765,7 @@
                 </div>
                 <div class="info-card">
                     <i class="fas fa-file-code"></i>
-                    <h3>1300+ Premium Scripts</h3>
+                    <h3>1300+ Top Scripts</h3>
                     <p>Huge collection of powerful, optimized scripts</p>
                 </div>
                 <div class="info-card">
@@ -803,12 +780,12 @@
                 </div>
             </div>
             
-            <p>With Solara Hub, you're not just getting a script executor - you're gaining access to a premium ecosystem designed to elevate your gameplay to unprecedented levels.</p>
+            <p>With Solara Hub, you're not just getting a script executor - you're gaining access to a top-tier ecosystem designed to elevate your gameplay to unprecedented levels.</p>
         </section>
 
         <!-- Features Section -->
         <section class="features-section" id="features">
-            <h2 class="section-title">Premium Features</h2>
+            <h2 class="section-title">Key Features</h2>
             <p class="tagline" style="text-align: center; margin-bottom: 3rem;">Discover what makes Solara Hub the ultimate choice for Roblox enthusiasts. Powerful features designed to enhance your gaming experience.</p>
             
             <div class="features-grid">
@@ -832,8 +809,8 @@
                     <div class="feature-icon">
                         <i class="fas fa-unlock"></i>
                     </div>
-                    <h3 class="feature-title">Free & Premium Options</h3>
-                    <p class="feature-description">Access powerful scripts without any cost or unlock exclusive features with our premium options. The choice is yours.</p>
+                    <h3 class="feature-title">Free Key System</h3>
+                    <p class="feature-description">Access powerful scripts with our key system. Get your key and unlock all features without any cost.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -870,7 +847,7 @@
 
         <section class="info-section" id="get-started">
             <h2 class="section-title">Get Started Now</h2>
-            <p>Getting started with Solara Hub is incredibly simple. Just copy the script below, paste it into your preferred Roblox executor, and experience the power of premium scripting.</p>
+            <p>Getting started with Solara Hub is incredibly simple. Just copy the script below, paste it into your preferred Roblox executor, and experience the power of top-tier scripting.</p>
             
             <div class="script-box">
                 <div class="script-code" id="scriptCode">
@@ -905,11 +882,10 @@
     
     <footer>
         <div class="social-links">
-            <a href="#" class="social-link youtube"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="social-link twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link tiktok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@samuraa1" class="social-link youtube"><i class="fab fa-youtube"></i></a>
+            <a href="https://github.com/samuraa1" class="social-link github"><i class="fab fa-github"></i></a>
         </div>
-        <p class="copyright">© 2025 Solara Hub. All rights reserved.</p>
+        <p class="copyright">© 2023 Solara Hub. All rights reserved.</p>
     </footer>
 
     <div class="toast" id="copyToast">Script copied to clipboard!</div>
@@ -1074,6 +1050,15 @@
                         behavior: 'smooth'
                     });
                 }
+            });
+        });
+
+        // Fix for Home link scrolling to top
+        document.querySelector('a[href="#home"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
     </script>
