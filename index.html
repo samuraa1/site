@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solara Hub | Best Roblox Scripthub</title>
+    <title>Solara Hub | Best Roblox Script Hub</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #8a2be2;
@@ -16,8 +16,11 @@
             --darker: #050508;
             --light: #f0f0ff;
             --gray: #1a1a2a;
-            --card-bg: linear-gradient(145deg, #121220, #1e1e30);
+            --card-bg: rgba(30, 30, 46, 0.6);
             --neon-glow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+            --newyear-primary: #d32f2f;
+            --newyear-secondary: #ff9800;
+            --newyear-accent: #4caf50;
         }
 
         * {
@@ -27,38 +30,47 @@
         }
 
         body {
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--dark);
             color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(138, 43, 226, 0.1) 0%, transparent 30%),
-                radial-gradient(circle at 85% 85%, rgba(147, 112, 219, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 20%, rgba(211, 47, 47, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(76, 175, 80, 0.1) 0%, transparent 20%),
                 linear-gradient(to bottom, var(--darker), var(--dark));
+            line-height: 1.6;
         }
 
-        .particles {
+        .snowflake {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            top: -10px;
+            color: white;
+            font-size: 1rem;
+            opacity: 0.8;
+            z-index: 1001;
             pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .navbar {
-            background: rgba(10, 10, 18, 0.85);
-            backdrop-filter: blur(12px);
+            background: rgba(10, 10, 18, 0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            padding: 0.8rem 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(211, 47, 47, 0.2);
         }
 
         .nav-container {
@@ -73,17 +85,18 @@
             display: flex;
             align-items: center;
             gap: 0.7rem;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--light);
             text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            text-shadow: var(--neon-glow);
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .nav-logo i {
-            color: var(--accent);
-            font-size: 1.8rem;
+        .nav-logo span {
+            background: linear-gradient(45deg, var(--newyear-primary), var(--newyear-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .nav-links {
@@ -97,26 +110,25 @@
             font-weight: 600;
             transition: all 0.3s ease;
             position: relative;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .nav-link:hover {
             color: var(--light);
-            text-shadow: 0 0 8px var(--accent);
         }
 
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -6px;
+            bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--newyear-primary), var(--newyear-secondary));
             transition: width 0.4s ease;
-            box-shadow: 0 0 8px var(--primary);
         }
 
         .nav-link:hover::after {
@@ -128,79 +140,79 @@
             background: none;
             border: none;
             color: var(--light);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             cursor: pointer;
-            text-shadow: 0 0 8px var(--accent);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            padding-top: 6rem;
-        }
-
-        header {
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 4rem 0;
+            padding: 0 2rem;
             position: relative;
             overflow: hidden;
         }
 
-        .logo {
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        .hero-logo {
             font-size: 5rem;
             font-weight: 800;
-            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            background: linear-gradient(45deg, var(--newyear-primary), var(--newyear-secondary), var(--newyear-accent));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin-bottom: 1.5rem;
-            text-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
-            position: relative;
-            display: inline-block;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             letter-spacing: 2px;
+            position: relative;
         }
 
-        .logo::before {
-            content: '✦';
-            font-family: 'Orbitron', sans-serif;
+        .hero-logo::after {
+            content: '🎄';
             position: absolute;
-            top: -25px;
-            right: -35px;
+            top: -20px;
+            right: -40px;
             font-size: 2.5rem;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(0, 188, 212, 0.8);
-            animation: pulse 2s ease-in-out infinite;
+            animation: bounce 2s ease-in-out infinite;
         }
 
-        .tagline {
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-tagline {
             font-size: 1.5rem;
             color: rgba(240, 240, 255, 0.9);
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             font-weight: 400;
-            max-width: 800px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.7;
-            text-shadow: 0 0 10px rgba(240, 240, 255, 0.3);
         }
 
-        .buttons {
+        .hero-buttons {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 1.8rem;
-            margin: 4rem 0;
+            gap: 1.5rem;
+            margin-top: 3rem;
         }
 
         .btn {
             position: relative;
-            padding: 1.2rem 2.5rem;
+            padding: 1rem 2rem;
             border: none;
             border-radius: 8px;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
             text-decoration: none;
             color: white;
@@ -208,15 +220,14 @@
             overflow: hidden;
             z-index: 1;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            min-width: 240px;
+            min-width: 200px;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.8rem;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             letter-spacing: 1px;
-            text-transform: uppercase;
         }
 
         .btn::before {
@@ -233,412 +244,340 @@
         }
 
         .btn:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
         }
 
         .btn:hover::before {
             transform: translateX(100%);
         }
 
-        .btn-scriptblox {
-            background: linear-gradient(45deg, #6a3093, #a044ff);
-            box-shadow: 0 0 15px rgba(106, 48, 147, 0.5);
-        }
-
-        .btn-rscripts {
-            background: linear-gradient(45deg, #4a5568, #718096);
-            box-shadow: 0 0 15px rgba(113, 128, 150, 0.5);
-        }
-
         .btn-discord {
-            background: linear-gradient(45deg, #5865f2, #7289da);
-            box-shadow: 0 0 15px rgba(88, 101, 242, 0.5);
+            background: linear-gradient(45deg, var(--newyear-primary), var(--newyear-secondary));
         }
 
         .btn-key {
-            background: linear-gradient(45deg, #ff8c00, #ffb142);
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+            background: linear-gradient(45deg, #4a5568, #718096);
         }
 
         .btn-copy {
-            background: linear-gradient(45deg, #00b894, #00cec9);
-            box-shadow: 0 0 15px rgba(0, 184, 148, 0.5);
+            background: linear-gradient(45deg, var(--newyear-accent), #00cec9);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
         }
 
         .section-title {
-            font-size: 3.2rem;
+            font-size: 2.5rem;
             text-align: center;
-            margin: 5rem 0 3rem;
+            margin-bottom: 3rem;
             position: relative;
             display: inline-block;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            background: linear-gradient(45deg, var(--newyear-primary), var(--newyear-secondary), var(--newyear-accent));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -18px;
+            bottom: -10px;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--newyear-secondary), transparent);
             border-radius: 3px;
-            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(211, 47, 47, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(211, 47, 47, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--newyear-primary), var(--newyear-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .feature-description {
+            color: rgba(240, 240, 255, 0.8);
+            line-height: 1.7;
         }
 
         .info-section {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 3.5rem;
+            border-radius: 15px;
+            padding: 3rem;
             margin: 4rem 0;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .info-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(211, 47, 47, 0.15);
         }
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin: 3rem 0;
-        }
-
-        .info-card {
-            background: linear-gradient(145deg, rgba(0, 0, 0, 0.25), rgba(138, 43, 226, 0.1));
-            padding: 2.5rem;
-            border-radius: 18px;
-            text-align: center;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(138, 43, 226, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .info-card:hover {
-            transform: translateY(-12px) scale(1.03);
-            box-shadow: 0 20px 35px rgba(138, 43, 226, 0.25);
-        }
-
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(138, 43, 226, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.7s ease;
-            z-index: 0;
-        }
-
-        .info-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        .info-card i {
-            font-size: 3.5rem;
-            margin-bottom: 1.8rem;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            z-index: 1;
-        }
-
-        .info-card h3 {
-            font-size: 1.7rem;
-            margin-bottom: 1.2rem;
-            color: var(--light);
-            font-family: 'Orbitron', sans-serif;
-            position: relative;
-            z-index: 1;
-        }
-
-        .info-card p {
-            color: rgba(240, 240, 255, 0.9);
-            line-height: 1.7;
-            font-size: 1.1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .features-list {
-            list-style: none;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
             margin: 2rem 0;
         }
 
-        .features-list li {
-            padding: 1.2rem 0;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
-            display: flex;
-            align-items: center;
-            font-size: 1.2rem;
+        .info-card {
+            text-align: center;
+            padding: 1.5rem;
         }
 
-        .features-list li:last-child {
-            border-bottom: none;
+        .info-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--newyear-primary), var(--newyear-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .features-list li i {
-            color: var(--accent);
-            margin-right: 1.2rem;
-            font-size: 1.5rem;
-            text-shadow: 0 0 8px rgba(0, 188, 212, 0.5);
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .info-card p {
+            color: rgba(240, 240, 255, 0.8);
+            line-height: 1.6;
         }
 
         .screenshot-container {
             background: var(--card-bg);
-            border-radius: 20px;
+            border-radius: 15px;
             padding: 3rem;
             margin: 4rem 0;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .screenshot-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(211, 47, 47, 0.15);
+            text-align: center;
         }
 
         .screenshot {
             width: 100%;
-            border-radius: 15px;
+            max-width: 800px;
+            border-radius: 10px;
             margin: 2rem 0;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             transition: all 0.6s ease;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid rgba(138, 43, 226, 0.3);
+            border: 2px solid rgba(211, 47, 47, 0.3);
         }
 
         .screenshot:hover {
-            transform: scale(1.03);
-            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.3);
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(211, 47, 47, 0.3);
         }
 
         .script-box {
-            background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(138, 43, 226, 0.1));
-            padding: 2.5rem;
-            border-radius: 15px;
-            margin: 3rem 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
             font-family: 'Fira Code', monospace;
             position: relative;
             overflow: hidden;
-            border-left: 5px solid var(--accent);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--newyear-accent);
         }
 
         .script-code {
             color: rgba(240, 240, 255, 0.95);
             overflow-x: auto;
-            padding-right: 1.5rem;
-            font-size: 1.2rem;
-            text-shadow: 0 0 5px rgba(240, 240, 255, 0.3);
+            padding-right: 1rem;
+            font-size: 1rem;
         }
 
         .copy-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(138, 43, 226, 0.2);
-            border: 1px solid rgba(138, 43, 226, 0.4);
+            top: 15px;
+            right: 15px;
+            background: rgba(211, 47, 47, 0.2);
+            border: 1px solid rgba(211, 47, 47, 0.4);
             color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 0.7rem;
+            gap: 0.5rem;
             font-weight: 600;
             backdrop-filter: blur(5px);
+            font-size: 0.9rem;
         }
 
         .copy-btn:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+            background: var(--newyear-accent);
         }
 
-        .features-section {
-            padding: 5rem 0;
+        .faq-section {
+            margin: 5rem 0;
         }
 
-        .features-grid {
+        .faq-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .feature-card {
+        .faq-item {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 3rem 2.5rem;
-            text-align: center;
-            transition: all 0.5s ease;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            position: relative;
-            overflow: hidden;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(211, 47, 47, 0.1);
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.6s ease;
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .feature-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(138, 43, 226, 0.3);
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
-        }
-
-        .feature-title {
-            font-size: 1.9rem;
-            margin-bottom: 1.5rem;
+        .faq-question {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
             color: var(--light);
-            font-weight: 700;
-            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .feature-description {
-            color: rgba(240, 240, 255, 0.9);
-            line-height: 1.8;
-            font-size: 1.15rem;
+        .faq-answer {
+            color: rgba(240, 240, 255, 0.8);
+            line-height: 1.6;
         }
 
         footer {
-            text-align: center;
-            padding: 5rem 0 3rem;
-            margin-top: 6rem;
-            background: linear-gradient(to top, var(--darker), transparent);
-            position: relative;
+            background: rgba(5, 5, 8, 0.9);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(211, 47, 47, 0.2);
         }
 
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.6), transparent);
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(240, 240, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--light);
         }
 
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 3rem 0;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .social-link {
             color: rgba(240, 240, 255, 0.8);
-            font-size: 1.8rem;
-            transition: all 0.4s ease;
-            width: 65px;
-            height: 65px;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(138, 43, 226, 0.15);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(138, 43, 226, 0.3);
+            background: rgba(211, 47, 47, 0.15);
+            border: 1px solid rgba(211, 47, 47, 0.3);
         }
 
         .social-link:hover {
             color: var(--light);
-            transform: translateY(-8px) scale(1.15);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .social-link.youtube:hover {
-            background: linear-gradient(45deg, #FF0000, #FF5E5E);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-        }
-
-        .social-link.github:hover {
-            background: linear-gradient(45deg, #333, #6e5494);
-            box-shadow: 0 0 20px rgba(110, 84, 148, 0.5);
+            transform: translateY(-3px);
         }
 
         .copyright {
-            color: rgba(240, 240, 255, 0.6);
-            font-size: 1rem;
-            margin-top: 3rem;
-            letter-spacing: 1px;
+            text-align: center;
+            padding-top: 3rem;
+            color: rgba(240, 240, 255, 0.5);
+            font-size: 0.9rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 2rem 0;
         }
 
         .toast {
             position: fixed;
-            bottom: 40px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--accent);
+            background: var(--newyear-accent);
             color: white;
-            padding: 1.2rem 3rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             opacity: 0;
             transition: opacity 0.4s ease;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
         }
 
         .toast.show {
@@ -646,23 +585,18 @@
         }
 
         @media (max-width: 1024px) {
-            .logo {
-                font-size: 4.2rem;
+            .hero-logo {
+                font-size: 4rem;
             }
             
             .section-title {
-                font-size: 2.8rem;
-            }
-            
-            .features-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 2.5rem;
+                font-size: 2.2rem;
             }
         }
 
         @media (max-width: 768px) {
             .navbar {
-                padding: 0.8rem 1.5rem;
+                padding: 1rem;
             }
             
             .nav-links {
@@ -675,7 +609,7 @@
                 flex-direction: column;
                 padding: 1.5rem;
                 gap: 1.5rem;
-                box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
                 backdrop-filter: blur(15px);
             }
             
@@ -687,105 +621,73 @@
                 display: block;
             }
             
-            .logo {
-                font-size: 3.5rem;
+            .hero-logo {
+                font-size: 3rem;
             }
             
-            .tagline {
-                font-size: 1.3rem;
+            .hero-tagline {
+                font-size: 1.2rem;
             }
             
             .btn {
                 min-width: 100%;
-                padding: 1.1rem 2rem;
             }
             
-            .info-grid, .features-grid {
+            .features-grid, .info-grid, .faq-grid {
                 grid-template-columns: 1fr;
             }
             
             .info-section, .screenshot-container {
-                padding: 2.5rem 2rem;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .social-link {
-                width: 55px;
-                height: 55px;
-                font-size: 1.5rem;
-            }
-            
-            .container {
-                padding: 1.5rem;
-                padding-top: 5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 2.8rem;
-            }
-            
-            .logo::before {
-                font-size: 1.8rem;
-                top: -18px;
-                right: -25px;
+                padding: 2rem;
             }
             
             .section-title {
                 font-size: 2rem;
             }
             
+            .container {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-logo {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
             .feature-title {
-                font-size: 1.7rem;
+                font-size: 1.3rem;
             }
             
             .feature-icon {
-                font-size: 3.5rem;
+                font-size: 2.5rem;
             }
             
-            header {
-                padding: 3rem 0;
+            .hero {
+                padding: 0 1rem;
             }
             
             .info-section, .screenshot-container {
-                padding: 2rem 1.5rem;
+                padding: 1.5rem;
             }
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-10px); }
         }
 
         .floating {
             animation: float 5s ease-in-out infinite;
         }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
-        }
-
-        .pulse {
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary); }
-            50% { text-shadow: 0 0 15px var(--primary), 0 0 30px var(--primary), 0 0 40px var(--primary); }
-        }
-
-        .glow {
-            animation: glow 3s ease-in-out infinite;
-        }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles-js"></div>
+    <div id="snowflakes"></div>
     
     <nav class="navbar">
         <div class="nav-container">
@@ -796,9 +698,9 @@
             <div class="nav-links">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#features" class="nav-link">Features</a>
-                <a href="#screenshot" class="nav-link">Hub Screenshot</a>
-                <a href="#get-started" class="nav-link">Get Started</a>
-                <a href="#discord" class="nav-link">Community</a>
+                <a href="#screenshot" class="nav-link">Screenshot</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#community" class="nav-link">Community</a>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -806,87 +708,72 @@
         </div>
     </nav>
     
-    <div class="container">
-        <header id="home">
-            <h1 class="logo floating">SOLARA HUB</h1>
-            <p class="tagline">The Ultimate Roblox Experience - Unleash the power of top-tier scripting with our advanced scripthub featuring 450+ games support and 1300+ scripts</p>
-        </header>
-        
-        <div class="buttons">
-            <a href="https://scriptblox.com/script/Universal-Script-Solara-Hub-415-Games-Keyless-Best-Scripthub-45360" class="btn btn-scriptblox">
-                <i class="fas fa-code"></i> ScriptBlox
-            </a>
-            <a href="https://rscripts.net/script/solara-hub-v3-340-games-TRdT" class="btn btn-rscripts">
-                <i class="fas fa-scroll"></i> RScripts
-            </a>
-            <a href="https://discord.gg/DPCKQRJmdF" class="btn btn-discord">
-                <i class="fab fa-discord"></i> Discord
-            </a>
-            <a href="get-key.html" class="btn btn-key">
-                <i class="fas fa-key"></i> Get Key
-            </a>
-            <button class="btn btn-copy" id="copyScriptBtn">
-                <i class="fas fa-copy"></i> Copy Script
-            </button>
-        </div>
-
-        <section class="info-section">
-            <h2 class="section-title">Why Choose Solara Hub?</h2>
-            <p>Solara Hub revolutionizes your Roblox experience with cutting-edge technology and an unparalleled collection of scripts. Our ScriptHub is designed for both beginners and advanced users who demand performance, reliability, and style.</p>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-logo floating">SOLARA HUB</h1>
+            <p class="hero-tagline">The Ultimate Roblox Experience - Unleash the power of top-tier scripting with our advanced scripthub featuring 450+ games support and 1300+ scripts</p>
             
-            <div class="info-grid">
-                <div class="info-card">
-                    <i class="fas fa-gamepad"></i>
-                    <h3>450+ Games Supported</h3>
-                    <p>Massive library of supported games with regular additions and updates</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-file-code"></i>
-                    <h3>1300+ Scripts</h3>
-                    <p>Huge collection of powerful, optimized scripts for every need</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>Stunning UI Design</h3>
-                    <p>Modern, intuitive interface with smooth animations and effects</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-bolt"></i>
-                    <h3>Lightning Fast</h3>
-                    <p>Optimized for maximum performance and minimal lag</p>
-                </div>
+            <div class="hero-buttons">
+                <a href="https://discord.gg/DPCKQRJmdF" class="btn btn-discord">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+                <a href="get-key.html" class="btn btn-key">
+                    <i class="fas fa-key"></i> Get Key
+                </a>
+                <button class="btn btn-copy" id="copyScriptBtn">
+                    <i class="fas fa-copy"></i> Copy Script
+                </button>
             </div>
-            
-            <p>With Solara Hub, you're not just getting a scripthub - you're gaining access to a top-tier ecosystem designed to elevate your gameplay to unprecedented levels.</p>
-        </section>
+        </div>
+    </section>
 
-        <section class="features-section" id="features">
-            <h2 class="section-title">Features</h2>
-            <p class="tagline" style="text-align: center; margin-bottom: 4rem;">Discover what makes Solara Hub the ultimate choice for Roblox enthusiasts. Powerful features designed to enhance your gaming experience.</p>
+    <div class="container">
+        <section id="features">
+            <h2 class="section-title">Why Choose Solara Hub?</h2>
+            <p style="text-align: center; margin-bottom: 3rem; color: rgba(240, 240, 255, 0.8); max-width: 800px; margin-left: auto; margin-right: auto;">
+                Solara Hub revolutionizes your Roblox experience with cutting-edge technology and an unparalleled collection of scripts. 
+                Our ScriptHub is designed for both beginners and advanced users who demand performance, reliability, and style.
+            </p>
             
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="feature-title">450+ Games Supported</h3>
+                    <p class="feature-description">Massive library of supported games with regular additions and updates to keep you ahead of the game.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <h3 class="feature-title">1300+ Scripts</h3>
+                    <p class="feature-description">Huge collection of powerful, optimized scripts for every need, from basic utilities to advanced features.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-description">Optimized for maximum performance and minimal lag, ensuring smooth operation even on lower-end devices.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Undetectable</h3>
+                    <p class="feature-description">Advanced obfuscation and protection methods to ensure your account stays safe while using our scripts.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
                         <i class="fas fa-sync-alt"></i>
                     </div>
-                    <h3 class="feature-title">Frequent Updates</h3>
-                    <p class="feature-description">Stay ahead with regular updates and new script releases. We continuously improve and expand our collection to provide you with the best gaming experience.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sliders-h"></i>
-                    </div>
-                    <h3 class="feature-title">Advanced Customization</h3>
-                    <p class="feature-description">Tailor scripts to your preferences with extensive customization options. Adjust settings, keybinds, and features to match your playstyle perfectly.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-unlock"></i>
-                    </div>
-                    <h3 class="feature-title">Free Key System</h3>
-                    <p class="feature-description">Access powerful scripts with our easy key system. Get your key and unlock all features without any cost.</p>
+                    <h3 class="feature-title">Monthly Updates</h3>
+                    <p class="feature-description">Major updates every month with new scripts, features, and game support to keep you ahead of the competition.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -894,36 +781,24 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <h3 class="feature-title">Community Support</h3>
-                    <p class="feature-description">Join our active Discord community for instant help, tips, and script sharing. Connect with fellow gamers and stay updated with the latest developments.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-desktop"></i>
-                    </div>
-                    <h3 class="feature-title">User-Friendly Interface</h3>
-                    <p class="feature-description">Enjoy an intuitive interface designed for both beginners and experienced users. Easy setup process with comprehensive documentation.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Security & Reliability</h3>
-                    <p class="feature-description">Scripts are thoroughly tested to ensure safety and reliability. Focus on gaming while we handle the technical aspects.</p>
+                    <p class="feature-description">Join our active Discord community for help, suggestions, and to connect with other users.</p>
                 </div>
             </div>
         </section>
 
         <section class="screenshot-container" id="screenshot">
             <h2 class="section-title">Hub Interface</h2>
-            <p style="text-align: center; margin-bottom: 2.5rem; color: rgba(240, 240, 255, 0.9);">Experience the stunning visual design of Solara Hub's futuristic interface</p>
+            <p style="text-align: center; margin-bottom: 2rem; color: rgba(240, 240, 255, 0.8);">
+                Experience the stunning visual design of Solara Hub's futuristic interface
+            </p>
             <img src="https://github.com/samuraa1/Solara-Hub/raw/main/SolaraHubV4Screen.png" alt="Solara Hub UI" class="screenshot">
         </section>
 
         <section class="info-section" id="get-started">
             <h2 class="section-title">Get Started Now</h2>
-            <p>Getting started with Solara Hub is incredibly simple. Just copy the script below, paste it into your preferred Roblox executor, and experience the power of top-tier scripting.</p>
+            <p style="text-align: center; margin-bottom: 2rem; color: rgba(240, 240, 255, 0.8);">
+                Getting started with Solara Hub is incredibly simple. Just copy the script below, paste it into your preferred Roblox executor, and experience the power of top-tier scripting.
+            </p>
             
             <div class="script-box">
                 <div class="script-code" id="scriptCode">
@@ -933,147 +808,134 @@
                     <i class="fas fa-copy"></i> Copy Script
                 </button>
             </div>
-            
-            <p style="text-align: center; margin-top: 2.5rem;">💬 Have suggestions or found a bug? Join our Discord server and let us know! We're constantly improving based on community feedback.</p>
         </section>
 
-        <section class="info-section" id="discord">
-            <h2 class="section-title">Join Our Community</h2>
-            <p>Become part of the growing Solara Hub community! Get support, share experiences, and stay updated with the latest developments.</p>
+        <section class="faq-section" id="faq">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p style="text-align: center; margin-bottom: 3rem; color: rgba(240, 240, 255, 0.8);">
+                Got questions? We've got answers. Find everything you need to know about Solara Hub.
+            </p>
             
-            <div style="text-align: center; margin: 3rem 0;">
-                <a href="https://discord.gg/DPCKQRJmdF" class="btn btn-discord" style="max-width: 350px; margin: 0 auto;">
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 class="faq-question">Is Solara Hub safe to use?</h3>
+                    <p class="faq-answer">Yes, Solara Hub uses advanced protection methods to ensure your account stays safe. However, as with any third-party software, use at your own risk.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Which platforms are supported?</h3>
+                    <p class="faq-answer">Solara Hub works on all platforms that support script execution with proper environment setup and compatibility.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Do I need to pay for Solara Hub?</h3>
+                    <p class="faq-answer">No, Solara Hub is completely free to use. We believe in providing powerful tools to everyone without paywalls.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">How do I get support?</h3>
+                    <p class="faq-answer">Join our Discord server for instant help from our community and development team. We're always happy to assist!</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">How often is Solara Hub updated?</h3>
+                    <p class="faq-answer">We release major updates every month with new scripts, features, and game support to keep you ahead.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I request new scripts or features?</h3>
+                    <p class="faq-answer">Absolutely! We welcome suggestions in our Discord server. Many of our features were implemented based on community feedback.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section" id="community">
+            <h2 class="section-title">Join Our Community</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: rgba(240, 240, 255, 0.8);">
+                Become part of the growing Solara Hub community! Get support, share experiences, and stay updated with the latest developments.
+            </p>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <a href="https://discord.gg/DPCKQRJmdF" class="btn btn-discord" style="display: inline-flex; max-width: 300px; margin: 0 auto;">
                     <i class="fab fa-discord"></i> Join Discord Server
                 </a>
             </div>
             
-            <p style="text-align: center;">Our Discord community is the perfect place to connect with other users, get help with scripts, and suggest new features for future updates.</p>
+            <p style="text-align: center; color: rgba(240, 240, 255, 0.7);">
+                Our Discord community is the perfect place to connect with other users, get help with scripts, and suggest new features for future updates.
+            </p>
         </section>
-
-        <section class="info-section">
-            <h2 class="section-title">Disclaimer</h2>
-            <p style="text-align: center;">This project is for educational purposes only. Use at your own risk. We do not encourage the use of our scripts on games where it is against the terms of service.</p>
-        </section>
-</div>
+    </div>
     
     <footer>
-        <div class="social-links">
-            <a href="https://www.youtube.com/@samuraa1" class="social-link youtube"><i class="fab fa-youtube"></i></a>
-            <a href="https://github.com/samuraa1" class="social-link github"><i class="fab fa-github"></i></a>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Solara Hub</h3>
+                <p style="color: rgba(240, 240, 255, 0.7); margin-bottom: 1.5rem;">
+                    The ultimate Roblox scripting experience with 450+ games support and 1300+ scripts.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@samuraa1" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="https://github.com/samuraa1" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://discord.gg/DPCKQRJmdF" class="social-link"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#screenshot">Screenshot</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#community">Community</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="get-key.html">Get Key</a></li>
+                    <li><a href="https://discord.gg/DPCKQRJmdF">Discord</a></li>
+                </ul>
+            </div>
         </div>
-        <p class="copyright">© 2025 Solara Hub. All rights reserved.</p>
+        
+        <div class="copyright">
+            <p>© 2023 Solara Hub. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;">This project is for educational purposes only. Use at your own risk.</p>
+        </div>
     </footer>
 
     <div class="toast" id="copyToast">Script copied to clipboard!</div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": ["#d32f2f", "#ff5252", "#ff9800"]
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    }
-                },
-                "opacity": {
-                    "value": 0.3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#ff5252",
-                    "opacity": 0.2,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 140,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
-            },
-            "retina_detect": true
-        });
-
+        // Create snowflakes
+        function createSnowflakes() {
+            const snowflakesContainer = document.getElementById('snowflakes');
+            const snowflakeCount = 50;
+            
+            for (let i = 0; i < snowflakeCount; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.innerHTML = '❄';
+                
+                // Random properties
+                const size = Math.random() * 1.5 + 0.5;
+                const left = Math.random() * 100;
+                const animationDuration = Math.random() * 10 + 5;
+                const animationDelay = Math.random() * 5;
+                
+                snowflake.style.left = `${left}vw`;
+                snowflake.style.fontSize = `${size}rem`;
+                snowflake.style.animationDuration = `${animationDuration}s`;
+                snowflake.style.animationDelay = `${animationDelay}s`;
+                
+                snowflakesContainer.appendChild(snowflake);
+            }
+        }
+        
+        // Mobile menu functionality
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.querySelector('.nav-links');
         
@@ -1090,6 +952,7 @@
             });
         });
 
+        // Copy script functionality
         const scriptCode = document.getElementById('scriptCode');
         const copyBtn = document.getElementById('copyBtn');
         const copyScriptBtn = document.getElementById('copyScriptBtn');
@@ -1108,6 +971,7 @@
         copyBtn.addEventListener('click', copyToClipboard);
         copyScriptBtn.addEventListener('click', copyToClipboard);
 
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1132,6 +996,9 @@
                 behavior: 'smooth'
             });
         });
+
+        // Initialize snowflakes
+        createSnowflakes();
     </script>
 </body>
 </html>
