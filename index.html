@@ -583,19 +583,6 @@
             opacity: 1;
         }
 
-        .newyear-decoration {
-            position: fixed;
-            z-index: 999;
-            pointer-events: none;
-            font-size: 2rem;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-        }
-
         @media (max-width: 1024px) {
             .hero-logo {
                 font-size: 4rem;
@@ -691,7 +678,6 @@
 </head>
 <body>
     <div id="snowflakes"></div>
-    <div id="decorations"></div>
     
     <nav class="navbar">
         <div class="nav-container">
@@ -938,32 +924,6 @@
                 snowflakesContainer.appendChild(snowflake);
             }
         }
-
-        // Create new year decorations
-        function createDecorations() {
-            const decorationsContainer = document.getElementById('decorations');
-            const decorationCount = 8;
-            const emojis = ['🎁', '🌟', '❄️', '🎄', '🔔', '⭐', '✨', '🎉'];
-            
-            for (let i = 0; i < decorationCount; i++) {
-                const decoration = document.createElement('div');
-                decoration.classList.add('newyear-decoration');
-                decoration.innerHTML = emojis[i];
-                
-                // Random properties
-                const left = Math.random() * 90 + 5;
-                const top = Math.random() * 80 + 10;
-                const animationDelay = Math.random() * 5;
-                const fontSize = Math.random() * 1 + 1.5;
-                
-                decoration.style.left = `${left}vw`;
-                decoration.style.top = `${top}vh`;
-                decoration.style.fontSize = `${fontSize}rem`;
-                decoration.style.animationDelay = `${animationDelay}s`;
-                
-                decorationsContainer.appendChild(decoration);
-            }
-        }
         
         // Mobile menu functionality
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1029,7 +989,6 @@
 
         // Initialize snowflakes and decorations
         createSnowflakes();
-        createDecorations();
     </script>
 </body>
 </html>
