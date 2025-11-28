@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solara Hub | Ultimate Roblox Script Hub</title>
+    <title>Solara Hub | Best Roblox Script Hub</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -722,7 +722,7 @@
             <h2 class="section-title">Why Choose Solara Hub?</h2>
             <p style="text-align: center; margin-bottom: 3rem; color: rgba(240, 240, 255, 0.8); max-width: 800px; margin-left: auto; margin-right: auto;">
                 Solara Hub revolutionizes your Roblox experience with cutting-edge technology and an unparalleled collection of scripts. 
-                Our ScriptHub is designed for both beginners and advanced users who demand performance, reliability, and style.
+                Our Script Hub is designed for both beginners and advanced users who demand performance, reliability, and style.
             </p>
             
             <div class="features-grid">
@@ -892,7 +892,7 @@
         </div>
         
         <div class="copyright">
-            <p>© 2023 Solara Hub. All rights reserved.</p>
+            <p>© 2025 Solara Hub. All rights reserved.</p>
             <p style="margin-top: 0.5rem; font-size: 0.8rem;">This project is for educational purposes only. Use at your own risk.</p>
         </div>
     </footer>
@@ -900,7 +900,6 @@
     <div class="toast" id="copyToast">Script copied to clipboard!</div>
 
     <script>
-        // Create snowflakes
         function createSnowflakes() {
             const snowflakesContainer = document.getElementById('snowflakes');
             const snowflakeCount = 50;
@@ -910,7 +909,6 @@
                 snowflake.classList.add('snowflake');
                 snowflake.innerHTML = '❄';
                 
-                // Random properties
                 const size = Math.random() * 1.5 + 0.5;
                 const left = Math.random() * 100;
                 const animationDuration = Math.random() * 10 + 5;
@@ -924,8 +922,7 @@
                 snowflakesContainer.appendChild(snowflake);
             }
         }
-        
-        // Mobile menu functionality
+
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.querySelector('.nav-links');
         
@@ -942,7 +939,6 @@
             });
         });
 
-        // Copy script functionality
         const scriptCode = document.getElementById('scriptCode');
         const copyBtn = document.getElementById('copyBtn');
         const copyScriptBtn = document.getElementById('copyScriptBtn');
@@ -961,7 +957,6 @@
         copyBtn.addEventListener('click', copyToClipboard);
         copyScriptBtn.addEventListener('click', copyToClipboard);
 
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -987,7 +982,6 @@
             });
         });
 
-        // Initialize snowflakes and decorations
         createSnowflakes();
     </script>
 </body>
