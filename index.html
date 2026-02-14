@@ -3,99 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solara Hub | Best Roblox Script Hub</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>">
+    <title>Solara Hub · Best Scripthub Ever</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23a855f7'>⭐</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #8a2be2;
-            --secondary: #9370db;
-            --accent: #00bcd4;
-            --dark: #0a0a12;
-            --darker: #050508;
-            --light: #f0f0ff;
-            --gray: #1a1a2a;
-            --card-bg: rgba(30, 30, 46, 0.6);
-            --neon-glow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
-            --newyear-primary: #1e90ff;
-            --newyear-secondary: #00bfff;
-            --newyear-accent: #00ced1;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-dark: #0a0b0f;
+            --bg-deeper: #04050a;
+            --surface: #14171f;
+            --surface-light: #1e2430;
+            --primary: #a855f7;
+            --primary-glow: rgba(168, 85, 247, 0.6);
+            --secondary: #06b6d4;
+            --secondary-glow: rgba(6, 182, 212, 0.5);
+            --accent: #d946ef;
+            --text-primary: #f0f2f8;
+            --text-secondary: #a1a9c4;
+            --border-glow: rgba(168, 85, 247, 0.3);
+            --card-bg: rgba(20, 23, 31, 0.7);
+            --gradient-1: linear-gradient(145deg, #a855f7, #d946ef);
+            --gradient-2: linear-gradient(145deg, #06b6d4, #3b82f6);
+            --shadow-heavy: 0 20px 35px -8px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(168, 85, 247, 0.15);
+        }
+
         body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
             font-family: 'Inter', sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
-            min-height: 100vh;
-            overflow-x: hidden;
+            line-height: 1.5;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(30, 144, 255, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(0, 206, 209, 0.1) 0%, transparent 20%),
-                linear-gradient(to bottom, var(--darker), var(--dark));
-            line-height: 1.6;
+                radial-gradient(circle at 30% 40%, rgba(168, 85, 247, 0.08) 0%, transparent 35%),
+                radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.06) 0%, transparent 40%),
+                linear-gradient(180deg, var(--bg-deeper) 0%, var(--bg-dark) 100%);
+            min-height: 100vh;
         }
 
-        .snowflake {
+        .orb-bg {
             position: fixed;
-            top: -10px;
-            color: white;
-            font-size: 1rem;
-            opacity: 0.8;
-            z-index: 1001;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, rgba(168, 85, 247, 0.02) 0px, transparent 1px, transparent 50px),
+                repeating-linear-gradient(90deg, rgba(6, 182, 212, 0.02) 0px, transparent 1px, transparent 50px);
             pointer-events: none;
-            animation: fall linear infinite;
+            z-index: 0;
         }
 
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-            }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deeper);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 8px;
+            box-shadow: 0 0 15px var(--primary-glow);
         }
 
         .navbar {
-            background: rgba(10, 10, 18, 0.95);
-            backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(30, 144, 255, 0.2);
+            z-index: 100;
+            backdrop-filter: blur(16px);
+            background: rgba(4, 5, 10, 0.7);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.25);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
         }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            font-size: 1.8rem;
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 800;
-            color: var(--light);
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .nav-logo span {
-            background: linear-gradient(45deg, var(--newyear-primary), var(--newyear-secondary));
+            font-size: 2rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff 0%, #c0b7e8 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 2.2rem;
         }
 
         .nav-links {
@@ -103,44 +115,78 @@
             gap: 2.5rem;
         }
 
-        .nav-link {
-            color: rgba(240, 240, 255, 0.8);
+        .nav-links a {
+            color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
+            font-weight: 500;
+            transition: 0.2s;
             font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.3px;
+            position: relative;
         }
 
-        .nav-link:hover {
-            color: var(--light);
-        }
-
-        .nav-link::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -4px;
             left: 0;
-            width: 0;
+            width: 0%;
             height: 2px;
-            background: linear-gradient(90deg, var(--newyear-primary), var(--newyear-secondary));
-            transition: width 0.4s ease;
+            background: var(--gradient-1);
+            transition: width 0.2s ease;
+            border-radius: 2px;
         }
 
-        .nav-link:hover::after {
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 1.5rem;
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid rgba(168, 85, 247, 0.6);
+            color: white;
+            padding: 0.6rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0 15px transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 25px var(--primary-glow);
+            transform: scale(1.02);
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            border: none;
+            color: white;
+            padding: 0.8rem 2.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            box-shadow: 0 10px 20px -5px rgba(168, 85, 247, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px var(--primary-glow);
         }
 
         .hero {
@@ -148,419 +194,334 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 0 2rem;
+            padding: 6rem 2rem 4rem;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 900px;
             z-index: 2;
         }
 
-        .hero-logo {
-            font-size: 5rem;
+        .hero-content {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 60px;
+            padding: 0.5rem 1.5rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            font-weight: 500;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5.5rem;
             font-weight: 800;
-            background: linear-gradient(45deg, var(--newyear-primary), var(--newyear-secondary), var(--newyear-accent));
+            line-height: 1.1;
+            background: linear-gradient(to right, #ffffff, #e2d5ff, #c3a0ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 1.5rem;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 2px;
-            position: relative;
+            margin-bottom: 1.8rem;
+            filter: drop-shadow(0 0 35px rgba(168, 85, 247, 0.4));
         }
 
-        .hero-logo::after {
-            content: '🎄';
-            position: absolute;
-            top: -20px;
-            right: -40px;
-            font-size: 2.5rem;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .hero-tagline {
-            font-size: 1.5rem;
-            color: rgba(240, 240, 255, 0.9);
-            margin-bottom: 3rem;
-            font-weight: 400;
+        .hero-typing {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
             max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
+            margin: 0 auto 3rem;
         }
 
-        .hero-buttons {
+        .hero-stats {
             display: flex;
+            gap: 2.5rem;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 3rem;
+            margin: 3rem 0;
         }
 
-        .btn {
-            position: relative;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            text-decoration: none;
-            color: white;
-            transition: all 0.4s ease;
-            overflow: hidden;
-            z-index: 1;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            min-width: 200px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            font-family: 'Montserrat', sans-serif;
+        .stat-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 1.2rem 2.2rem;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.7s ease;
-            z-index: -1;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
-        }
-
-        .btn:hover::before {
-            transform: translateX(100%);
-        }
-
-        .btn-discord {
-            background: linear-gradient(45deg, #8a2be2, #9370db);
-        }
-
-        .btn-key {
-            background: linear-gradient(45deg, #4a5568, #718096);
-        }
-
-        .btn-copy {
-            background: linear-gradient(45deg, var(--newyear-accent), #00cec9);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .games-section {
+            background: var(--bg-deeper);
+            border-top: 1px solid rgba(168, 85, 247, 0.2);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
             padding: 6rem 2rem;
+            position: relative;
+            z-index: 2;
         }
 
-        .section-title {
-            font-size: 2.5rem;
+        .section-header {
             text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            display: block;
-            background: linear-gradient(45deg, var(--newyear-primary), var(--newyear-secondary), var(--newyear-accent));
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #c0b7e8);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            width: 100%;
+            display: inline-block;
+            margin-bottom: 1rem;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--newyear-secondary), transparent);
-            border-radius: 3px;
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .games-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .game-tag {
+            background: rgba(20, 23, 31, 0.7);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            backdrop-filter: blur(4px);
+            padding: 0.8rem 1.6rem;
+            border-radius: 60px;
+            font-weight: 500;
+            color: #e0e0ff;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+        }
+
+        .game-tag:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px var(--primary-glow);
+            background: rgba(168, 85, 247, 0.15);
+            color: white;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            max-width: 1300px;
+            margin: 5rem auto 0;
+            padding: 0 2rem;
         }
 
         .feature-card {
             background: var(--card-bg);
-            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 28px;
             padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(30, 144, 255, 0.15);
+            transition: 0.25s;
+            box-shadow: 0 25px 40px -15px black;
             position: relative;
             overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, var(--primary-glow), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(30, 144, 255, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-8px);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.2;
         }
 
         .feature-icon {
-            font-size: 3rem;
+            font-size: 2.7rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, var(--newyear-primary), var(--newyear-accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
         }
 
-        .feature-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--light);
+        .feature-card h3 {
+            font-size: 1.8rem;
             font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .feature-description {
-            color: rgba(240, 240, 255, 0.8);
-            line-height: 1.7;
-        }
-
-        .info-section {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 3rem;
-            margin: 4rem 0;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(30, 144, 255, 0.15);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .info-card {
-            text-align: center;
-            padding: 1.5rem;
-        }
-
-        .info-card i {
-            font-size: 2.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--newyear-primary), var(--newyear-accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
         }
 
-        .info-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--light);
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .info-card p {
-            color: rgba(240, 240, 255, 0.8);
+        .feature-card p {
+            color: var(--text-secondary);
             line-height: 1.6;
         }
 
-        .screenshot-container {
-            background: var(--card-bg);
-            border-radius: 15px;
+        .script-panel {
+            background: var(--surface);
+            border-radius: 32px;
             padding: 3rem;
-            margin: 4rem 0;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(30, 144, 255, 0.15);
-            text-align: center;
+            max-width: 1000px;
+            margin: 6rem auto;
+            border: 1px solid var(--border-glow);
+            box-shadow: var(--shadow-heavy);
         }
 
-        .screenshot {
-            width: 100%;
-            max-width: 800px;
-            border-radius: 10px;
-            margin: 2rem 0;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            transition: all 0.6s ease;
-            border: 2px solid rgba(30, 144, 255, 0.3);
+        .script-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
         }
 
-        .screenshot:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 40px rgba(30, 144, 255, 0.3);
+        .script-header i {
+            font-size: 2rem;
+            color: var(--primary);
         }
 
-        .script-box {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            font-family: 'Fira Code', monospace;
-            position: relative;
-            overflow: hidden;
-            border-left: 4px solid var(--newyear-accent);
+        .script-header span {
+            font-family: 'Space Grotesk', monospace;
+            font-weight: 600;
+            color: var(--secondary);
         }
 
-        .script-code {
-            color: rgba(240, 240, 255, 0.95);
-            overflow-x: auto;
-            padding-right: 1rem;
-            font-size: 1rem;
+        .code-block {
+            background: #0c0f17;
+            border-radius: 24px;
+            padding: 1.8rem;
+            border: 1px solid #2f2b44;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .code-block code {
+            color: #b7e4ff;
+            letter-spacing: 0.5px;
+            word-break: break-word;
         }
 
         .copy-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(30, 144, 255, 0.2);
-            border: 1px solid rgba(30, 144, 255, 0.4);
+            background: transparent;
+            border: 1px solid var(--primary);
             color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.2s;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-            font-size: 0.9rem;
+            gap: 0.8rem;
         }
 
         .copy-btn:hover {
-            background: var(--newyear-accent);
+            background: var(--primary);
+            box-shadow: 0 0 30px var(--primary-glow);
         }
 
         .faq-section {
-            margin: 5rem 0;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding: 2rem 2rem 5rem;
         }
-
         .faq-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 1.8rem;
         }
 
         .faq-item {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(30, 144, 255, 0.1);
-        }
-
-        .faq-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(20, 23, 31, 0.4);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            border-radius: 22px;
+            padding: 2rem;
         }
 
         .faq-question {
-            font-size: 1.2rem;
+            font-weight: 700;
+            font-size: 1.3rem;
             margin-bottom: 0.8rem;
-            color: var(--light);
-            font-weight: 600;
-            font-family: 'Montserrat', sans-serif;
+            color: white;
         }
 
         .faq-answer {
-            color: rgba(240, 240, 255, 0.8);
-            line-height: 1.6;
+            color: var(--text-secondary);
         }
 
         footer {
-            background: rgba(5, 5, 8, 0.9);
-            padding: 4rem 0 2rem;
-            margin-top: 4rem;
-            border-top: 1px solid rgba(30, 144, 255, 0.2);
+            background: var(--bg-deeper);
+            border-top: 1px solid rgba(168, 85, 247, 0.2);
+            padding: 3rem 2rem 2rem;
         }
 
-        .footer-content {
-            max-width: 1200px;
+        .footer-inner {
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
             gap: 3rem;
         }
 
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            color: var(--light);
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: rgba(240, 240, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--light);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-link {
-            color: rgba(240, 240, 255, 0.8);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(30, 144, 255, 0.15);
-            border: 1px solid rgba(30, 144, 255, 0.3);
-        }
-
-        .social-link:hover {
-            color: var(--light);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
+        .footer-copyright {
             text-align: center;
-            padding-top: 3rem;
-            color: rgba(240, 240, 255, 0.5);
-            font-size: 0.9rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 2rem 0;
+            color: var(--text-secondary);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.4rem;
+            margin-right: 1.5rem;
+            transition: 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
         }
 
         .toast {
@@ -568,421 +529,291 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--newyear-accent);
+            background: var(--surface);
+            border: 1px solid var(--primary);
+            border-radius: 60px;
+            padding: 1rem 2.5rem;
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            transition: opacity 0.3s;
             opacity: 0;
-            transition: opacity 0.4s ease;
-            font-weight: 600;
+            pointer-events: none;
+            box-shadow: 0 0 40px var(--primary-glow);
         }
 
         .toast.show {
             opacity: 1;
         }
 
-        @media (max-width: 1024px) {
-            .hero-logo {
-                font-size: 4rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
+        .mobile-menu {
+            display: none;
         }
 
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem;
-            }
-            
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(10, 10, 18, 0.95);
-                flex-direction: column;
-                padding: 1.5rem;
-                gap: 1.5rem;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-                backdrop-filter: blur(15px);
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero-logo {
-                font-size: 3rem;
-            }
-            
-            .hero-tagline {
-                font-size: 1.2rem;
-            }
-            
-            .btn {
-                min-width: 100%;
-            }
-            
-            .features-grid, .info-grid, .faq-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .info-section, .screenshot-container {
-                padding: 2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .container {
-                padding: 4rem 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-logo {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .feature-title {
-                font-size: 1.3rem;
-            }
-            
-            .feature-icon {
-                font-size: 2.5rem;
-            }
-            
-            .hero {
-                padding: 0 1rem;
-            }
-            
-            .info-section, .screenshot-container {
-                padding: 1.5rem;
-            }
+        @media (max-width: 800px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            .hero h1 { font-size: 3.2rem; }
+            .hero-stats { flex-direction: column; align-items: center; }
+            .stat-item { width: 80%; }
         }
     </style>
 </head>
 <body>
-    <div id="snowflakes"></div>
-    
+    <div class="orb-bg"></div>
+
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#home" class="nav-logo">
-                <i class="fas fa-stars"></i>
-                <span>SOLARA HUB</span>
-            </a>
-            <div class="nav-links">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#screenshot" class="nav-link">Screenshot</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-                <a href="#community" class="nav-link">Community</a>
+            <div class="logo">
+                <i class="fas fa-star"></i> Solara Hub
             </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#games">Games</a>
+                <a href="#features">Features</a>
+                <a href="#faq">FAQ</a>
+                <a href="#community">Community</a>
+            </div>
+            <button class="btn-outline" onclick="window.open('https://discord.gg/DPCKQRJmdF', '_blank')">
+                <i class="fab fa-discord"></i> Discord
             </button>
+            <button class="mobile-menu btn-outline" style="border:none;">☰</button>
         </div>
     </nav>
-    
+
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1 class="hero-logo floating">SOLARA HUB</h1>
-            <p class="hero-tagline">The Ultimate Roblox Experience - Unleash the power of top-tier scripting with our advanced scripthub featuring 450+ games support and 1300+ scripts</p>
-            
-            <div class="hero-buttons">
-                <a href="https://discord.gg/DPCKQRJmdF" class="btn btn-discord">
-                    <i class="fab fa-discord"></i> Discord
-                </a>
-                <a href="get-key.html" class="btn btn-key">
-                    <i class="fas fa-key"></i> Get Key
-                </a>
-                <button class="btn btn-copy" id="copyScriptBtn">
-                    <i class="fas fa-copy"></i> Copy Script
-                </button>
+            <div class="hero-badge">
+                <i class="fas fa-star" style="margin-right: 8px;"></i> BEST ROBLOX SCRIPT HUB
+            </div>
+            <h1>SOLARA HUB</h1>
+            <div class="hero-typing">
+                The Ultimate Roblox Experience - Unleash the power of top-tier scripting with our advanced scripthub featuring 450+ games support and 1300+ scripts
+            </div>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn-primary" id="copyScriptFromHero"><i class="fas fa-copy"></i> Copy Script</button>
+                <a href="get-key.html" class="btn-outline" style="text-decoration: none;"><i class="fas fa-key"></i> Get Key</a>
+                <button class="btn-outline" onclick="window.location.href='#games'"><i class="fas fa-gamepad"></i> Games</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><span class="stat-number">450+</span> <div class="stat-label">games</div></div>
+                <div class="stat-item"><span class="stat-number">1300+</span> <div class="stat-label">scripts</div></div>
+                <div class="stat-item"><span class="stat-number">Monthly</span> <div class="stat-label">updates</div></div>
             </div>
         </div>
     </section>
 
-    <div class="container">
-        <section id="features">
-            <h2 class="section-title">Why Choose Solara Hub?</h2>
-            <p style="text-align: center; margin-bottom: 3rem; color: rgba(240, 240, 255, 0.8); max-width: 800px; margin-left: auto; margin-right: auto;">
-                Solara Hub revolutionizes your Roblox experience with cutting-edge technology and an unparalleled collection of scripts. 
-                Our Script Hub is designed for both beginners and advanced users who demand performance, reliability, and style.
-            </p>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <h3 class="feature-title">450+ Games Supported</h3>
-                    <p class="feature-description">Massive library of supported games with regular additions and updates to keep you ahead of the game.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-code"></i>
-                    </div>
-                    <h3 class="feature-title">1300+ Scripts</h3>
-                    <p class="feature-description">Huge collection of powerful, optimized scripts for every need, from basic utilities to advanced features.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3 class="feature-title">Lightning Fast</h3>
-                    <p class="feature-description">Optimized for maximum performance and minimal lag, ensuring smooth operation even on lower-end devices.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Undetectable</h3>
-                    <p class="feature-description">Advanced obfuscation and protection methods to ensure your account stays safe while using our scripts.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Monthly Updates</h3>
-                    <p class="feature-description">Major updates every month with new scripts, features, and game support to keep you ahead of the competition.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="feature-title">Community Support</h3>
-                    <p class="feature-description">Join our active Discord community for help, suggestions, and to connect with other users.</p>
-                </div>
+    <section class="games-section" id="games">
+        <div class="section-header">
+            <h2><i class="fas fa-cubes"></i> supported games</h2>
+            <p>Massive library of supported games with regular additions and updates</p>
+        </div>
+        <div class="games-grid" id="gamesGrid"></div>
+        <div style="text-align: center; margin-top: 2rem;" id="gamesLoading">Loading game list from repository...</div>
+    </section>
+
+    <section id="features" style="padding: 4rem 0;">
+        <div class="section-header">
+            <h2>Why Choose Solara Hub?</h2>
+            <p>Solara Hub revolutionizes your Roblox experience with cutting-edge technology</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-gamepad"></i></div>
+                <h3>450+ Games Supported</h3>
+                <p>Massive library of supported games with regular additions and updates to keep you ahead of the game.</p>
             </div>
-        </section>
-
-        <section class="screenshot-container" id="screenshot">
-            <h2 class="section-title">Hub Interface</h2>
-            <p style="text-align: center; margin-bottom: 2rem; color: rgba(240, 240, 255, 0.8);">
-                Experience the stunning visual design of Solara Hub's futuristic interface
-            </p>
-            <img src="https://github.com/samuraa1/Solara-Hub/raw/main/SolaraHubV4Screen.png" alt="Solara Hub UI" class="screenshot">
-        </section>
-
-        <section class="info-section" id="get-started">
-            <h2 class="section-title">Get Started Now</h2>
-            <p style="text-align: center; margin-bottom: 2rem; color: rgba(240, 240, 255, 0.8);">
-                Getting started with Solara Hub is incredibly simple. Just copy the script below, paste it into your preferred Roblox executor, and experience the power of top-tier scripting.
-            </p>
-            
-            <div class="script-box">
-                <div class="script-code" id="scriptCode">
-                    loadstring(game:HttpGet('https://solarahub.space/SH.lua'))()
-                </div>
-                <button class="copy-btn" id="copyBtn">
-                    <i class="fas fa-copy"></i> Copy Script
-                </button>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-file-code"></i></div>
+                <h3>1300+ Scripts</h3>
+                <p>Huge collection of powerful, optimized scripts for every need, from basic utilities to advanced features.</p>
             </div>
-        </section>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h3>Lightning Fast</h3>
+                <p>Optimized for maximum performance and minimal lag, ensuring smooth operation even on lower-end devices.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Undetectable</h3>
+                <p>Advanced obfuscation and protection methods to ensure your account stays safe while using our scripts.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                <h3>Monthly Updates</h3>
+                <p>Major updates every month with new scripts, features, and game support to keep you ahead of the competition.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-users"></i></div>
+                <h3>Community Support</h3>
+                <p>Join our active Discord community for help, suggestions, and to connect with other users.</p>
+            </div>
+        </div>
+    </section>
 
-        <section class="faq-section" id="faq">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <p style="text-align: center; margin-bottom: 3rem; color: rgba(240, 240, 255, 0.8);">
-                Got questions? We've got answers. Find everything you need to know about Solara Hub.
-            </p>
-            
+    <div class="script-panel">
+        <div class="script-header">
+            <i class="fas fa-terminal"></i>
+            <span>⚡ GET STARTED NOW</span>
+        </div>
+        <div class="code-block">
+            <code id="scriptText">loadstring(game:HttpGet('https://solarahub.space/SH.lua'))()</code>
+            <button class="copy-btn" id="copyScriptBtn"><i class="fas fa-copy"></i> copy</button>
+        </div>
+    </div>
+
+    <section id="faq" style="padding: 2rem 0 5rem;">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Got questions? We've got answers.</p>
+        </div>
+        <div class="faq-section">
             <div class="faq-grid">
                 <div class="faq-item">
-                    <h3 class="faq-question">Is Solara Hub safe to use?</h3>
-                    <p class="faq-answer">Yes, Solara Hub uses advanced protection methods to ensure your account stays safe. However, as with any third-party software, use at your own risk.</p>
+                    <div class="faq-question">Is Solara Hub safe to use?</div>
+                    <div class="faq-answer">Yes, Solara Hub uses advanced protection methods to ensure your account stays safe. However, as with any third-party software, use at your own risk.</div>
                 </div>
-                
                 <div class="faq-item">
-                    <h3 class="faq-question">Which platforms are supported?</h3>
-                    <p class="faq-answer">Solara Hub works on all platforms that support script execution with proper environment setup and compatibility.</p>
+                    <div class="faq-question">Which platforms are supported?</div>
+                    <div class="faq-answer">Solara Hub works on all platforms that support script execution with proper environment setup and compatibility.</div>
                 </div>
-                
                 <div class="faq-item">
-                    <h3 class="faq-question">Do I need to pay for Solara Hub?</h3>
-                    <p class="faq-answer">No, Solara Hub is completely free to use. We believe in providing powerful tools to everyone without paywalls.</p>
+                    <div class="faq-question">Do I need to pay for Solara Hub?</div>
+                    <div class="faq-answer">No, Solara Hub is completely free to use. We believe in providing powerful tools to everyone without paywalls.</div>
                 </div>
-                
                 <div class="faq-item">
-                    <h3 class="faq-question">How do I get support?</h3>
-                    <p class="faq-answer">Join our Discord server for instant help from our community and development team. We're always happy to assist!</p>
+                    <div class="faq-question">How do I get support?</div>
+                    <div class="faq-answer">Join our Discord server for instant help from our community and development team. We're always happy to assist!</div>
                 </div>
-                
                 <div class="faq-item">
-                    <h3 class="faq-question">How often is Solara Hub updated?</h3>
-                    <p class="faq-answer">We release major updates every month with new scripts, features, and game support to keep you ahead.</p>
+                    <div class="faq-question">How often is Solara Hub updated?</div>
+                    <div class="faq-answer">We release major updates every month with new scripts, features, and game support to keep you ahead.</div>
                 </div>
-                
                 <div class="faq-item">
-                    <h3 class="faq-question">Can I request new scripts or features?</h3>
-                    <p class="faq-answer">Absolutely! We welcome suggestions in our Discord server. Many of our features were implemented based on community feedback.</p>
+                    <div class="faq-question">Can I request new scripts or features?</div>
+                    <div class="faq-answer">Absolutely! We welcome suggestions in our Discord server. Many of our features were implemented based on community feedback.</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="info-section" id="community">
-            <h2 class="section-title">Join Our Community</h2>
-            <p style="text-align: center; margin-bottom: 2rem; color: rgba(240, 240, 255, 0.8);">
-                Become part of the growing Solara Hub community! Get support, share experiences, and stay updated with the latest developments.
-            </p>
-            
-            <div style="text-align: center; margin: 2rem 0;">
-                <a href="https://discord.gg/DPCKQRJmdF" class="btn btn-discord" style="display: inline-flex; max-width: 300px; margin: 0 auto;">
-                    <i class="fab fa-discord"></i> Join Discord Server
-                </a>
-            </div>
-            
-            <p style="text-align: center; color: rgba(240, 240, 255, 0.7);">
-                Our Discord community is the perfect place to connect with other users, get help with scripts, and suggest new features for future updates.
-            </p>
-        </section>
-    </div>
-    
+    <section id="community" style="padding: 2rem 2rem 4rem;">
+        <div class="section-header">
+            <h2>Join Our Community</h2>
+            <p>Become part of the growing Solara Hub community! Get support, share experiences, and stay updated.</p>
+        </div>
+        <div style="text-align: center;">
+            <button class="btn-primary" onclick="window.open('https://discord.gg/DPCKQRJmdF', '_blank')"><i class="fab fa-discord"></i> Join Discord Server</button>
+        </div>
+    </section>
+
     <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Solara Hub</h3>
-                <p style="color: rgba(240, 240, 255, 0.7); margin-bottom: 1.5rem;">
-                    The ultimate Roblox scripting experience with 450+ games support and 1300+ scripts.
-                </p>
-                <div class="social-links">
-                    <a href="https://www.youtube.com/@samuraa1" class="social-link"><i class="fab fa-youtube"></i></a>
-                    <a href="https://github.com/samuraa1" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="https://discord.gg/DPCKQRJmdF" class="social-link"><i class="fab fa-discord"></i></a>
+        <div class="footer-inner">
+            <div style="max-width: 300px;">
+                <div class="logo" style="font-size: 2rem; margin-bottom: 1rem;"><i class="fas fa-star"></i> Solara Hub</div>
+                <p style="color: var(--text-secondary);">The ultimate Roblox scripting experience with 450+ games support and 1300+ scripts.</p>
+                <div class="social-links" style="margin-top: 2rem;">
+                    <a href="https://www.youtube.com/@samuraa1"><i class="fab fa-youtube"></i></a>
+                    <a href="https://github.com/samuraa1"><i class="fab fa-github"></i></a>
+                    <a href="https://discord.gg/DPCKQRJmdF"><i class="fab fa-discord"></i></a>
                 </div>
             </div>
-            
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#screenshot">Screenshot</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#community">Community</a></li>
+            <div>
+                <h4 style="margin-bottom: 1rem;">Quick Links</h4>
+                <ul style="list-style: none; color: var(--text-secondary);">
+                    <li style="margin-bottom: 0.5rem;"><a href="#home" style="color: inherit; text-decoration: none;">Home</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#features" style="color: inherit; text-decoration: none;">Features</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#faq" style="color: inherit; text-decoration: none;">FAQ</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#community" style="color: inherit; text-decoration: none;">Community</a></li>
                 </ul>
             </div>
-            
-            <div class="footer-column">
-                <h3>Resources</h3>
-                <ul class="footer-links">
-                    <li><a href="get-key.html">Get Key</a></li>
-                    <li><a href="https://discord.gg/DPCKQRJmdF">Discord</a></li>
+            <div>
+                <h4 style="margin-bottom: 1rem;">Resources</h4>
+                <ul style="list-style: none; color: var(--text-secondary);">
+                    <li style="margin-bottom: 0.5rem;"><a href="get-key.html" style="color: inherit; text-decoration: none;">Get Key</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="https://discord.gg/DPCKQRJmdF" style="color: inherit; text-decoration: none;">Discord</a></li>
                 </ul>
             </div>
         </div>
-        
-        <div class="copyright">
-            <p>© 2026 Solara Hub. All rights reserved.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.8rem;">This project is for educational purposes only. Use at your own risk.</p>
+        <div class="footer-copyright">
+            © 2026 Solara Hub. All rights reserved. This project is for educational purposes only. Use at your own risk.
         </div>
     </footer>
 
-    <div class="toast" id="copyToast">Script copied to clipboard!</div>
+    <div class="toast" id="liveToast">✨ Script copied to clipboard!</div>
 
     <script>
-        function createSnowflakes() {
-            const snowflakesContainer = document.getElementById('snowflakes');
-            const snowflakeCount = 50;
+        (function() {
+            const gamesGrid = document.getElementById('gamesGrid');
+            const loadingSpan = document.getElementById('gamesLoading');
             
-            for (let i = 0; i < snowflakeCount; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.classList.add('snowflake');
-                snowflake.innerHTML = '❄';
-                
-                const size = Math.random() * 1.5 + 0.5;
-                const left = Math.random() * 100;
-                const animationDuration = Math.random() * 10 + 5;
-                const animationDelay = Math.random() * 5;
-                
-                snowflake.style.left = `${left}vw`;
-                snowflake.style.fontSize = `${size}rem`;
-                snowflake.style.animationDuration = `${animationDuration}s`;
-                snowflake.style.animationDelay = `${animationDelay}s`;
-                
-                snowflakesContainer.appendChild(snowflake);
-            }
-        }
-
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-
-        const scriptCode = document.getElementById('scriptCode');
-        const copyBtn = document.getElementById('copyBtn');
-        const copyScriptBtn = document.getElementById('copyScriptBtn');
-        const copyToast = document.getElementById('copyToast');
-        
-        function copyToClipboard() {
-            const text = scriptCode.innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                copyToast.classList.add('show');
-                setTimeout(() => {
-                    copyToast.classList.remove('show');
-                }, 2000);
-            });
-        }
-        
-        copyBtn.addEventListener('click', copyToClipboard);
-        copyScriptBtn.addEventListener('click', copyToClipboard);
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+            fetch('https://raw.githubusercontent.com/samuraa1/Solara-Hub/refs/heads/main/Games', { cache: "no-store" })
+                .then(res => {
+                    if (!res.ok) throw new Error('Network error');
+                    return res.text();
+                })
+                .then(data => {
+                    const games = data.split('\n').map(line => line.trim()).filter(name => name.length > 0);
+                    loadingSpan.style.display = 'none';
+                    
+                    if (games.length === 0) {
+                        gamesGrid.innerHTML = '<div style="color:gray">Games list is empty</div>';
+                        return;
+                    }
+                    
+                    games.slice(0, 120).forEach(game => {
+                        const tag = document.createElement('span');
+                        tag.className = 'game-tag';
+                        tag.textContent = game;
+                        gamesGrid.appendChild(tag);
                     });
-                }
-            });
-        });
+                    
+                    if (games.length > 120) {
+                        const more = document.createElement('span');
+                        more.className = 'game-tag';
+                        more.textContent = `and ${games.length - 120} more...`;
+                        gamesGrid.appendChild(more);
+                    }
+                })
+                .catch(err => {
+                    loadingSpan.textContent = 'Could not load game list, but we support 450+ games!';
+                    console.warn(err);
+                    const fallbackGames = ['Adopt Me!', 'Brookhaven', 'Tower of Hell', 'Jailbreak', 'Blox Fruits', 'Pet Simulator X', 'Arsenal', 'MM2', 'Phantom Forces', 'Doors', 'Flee the Facility', 'Slap Battles', 'BedWars', 'Shindo Life'];
+                    fallbackGames.forEach(g => {
+                        const tag = document.createElement('span');
+                        tag.className = 'game-tag';
+                        tag.textContent = g;
+                        gamesGrid.appendChild(tag);
+                    });
+                });
 
-        document.querySelector('a[href="#home"]').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+            function copyScript() {
+                const script = document.getElementById('scriptText').innerText;
+                navigator.clipboard.writeText(script).then(() => {
+                    const toast = document.getElementById('liveToast');
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 1800);
+                });
+            }
 
-        createSnowflakes();
+            document.getElementById('copyScriptBtn').addEventListener('click', copyScript);
+            document.getElementById('copyScriptFromHero').addEventListener('click', copyScript);
+
+            document.querySelector('.mobile-menu')?.addEventListener('click', ()=> {
+                alert('Check our Discord server for mobile navigation!');
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const id = this.getAttribute('href');
+                    if(id === '#') return;
+                    const target = document.querySelector(id);
+                    if(target) target.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        })();
     </script>
 </body>
 </html>
