@@ -3,817 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solara Hub · Best Scripthub Ever</title>
+    <title>Solara Hub — The Ultimate Roblox Script Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Для фавиконки звезда -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23a855f7'>⭐</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-dark: #0a0b0f;
-            --bg-deeper: #04050a;
-            --surface: #14171f;
-            --surface-light: #1e2430;
-            --primary: #a855f7;
-            --primary-glow: rgba(168, 85, 247, 0.6);
-            --secondary: #06b6d4;
-            --secondary-glow: rgba(6, 182, 212, 0.5);
-            --accent: #d946ef;
-            --text-primary: #f0f2f8;
-            --text-secondary: #a1a9c4;
-            --border-glow: rgba(168, 85, 247, 0.3);
-            --card-bg: rgba(20, 23, 31, 0.7);
-            --gradient-1: linear-gradient(145deg, #a855f7, #d946ef);
-            --gradient-2: linear-gradient(145deg, #06b6d4, #3b82f6);
-            --shadow-heavy: 0 20px 35px -8px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(168, 85, 247, 0.15);
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.5;
-            background-image: 
-                radial-gradient(circle at 30% 40%, rgba(168, 85, 247, 0.08) 0%, transparent 35%),
-                radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.06) 0%, transparent 40%),
-                linear-gradient(180deg, var(--bg-deeper) 0%, var(--bg-dark) 100%);
-            min-height: 100vh;
-        }
-
-        .orb-bg {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                repeating-linear-gradient(0deg, rgba(168, 85, 247, 0.02) 0px, transparent 1px, transparent 50px),
-                repeating-linear-gradient(90deg, rgba(6, 182, 212, 0.02) 0px, transparent 1px, transparent 50px);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-deeper);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 8px;
-            box-shadow: 0 0 15px var(--primary-glow);
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            backdrop-filter: blur(16px);
-            background: rgba(4, 5, 10, 0.7);
-            border-bottom: 1px solid rgba(168, 85, 247, 0.25);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
-        }
-
-        .nav-container {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 800;
-            font-size: 2rem;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #fff 0%, #c0b7e8 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo i {
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-size: 2.2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.2s;
-            font-size: 1rem;
-            letter-spacing: 0.3px;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: var(--gradient-1);
-            transition: width 0.2s ease;
-            border-radius: 2px;
-        }
-
-        .nav-links a:hover {
-            color: white;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1.5px solid rgba(168, 85, 247, 0.6);
-            color: white;
-            padding: 0.6rem 1.4rem;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 0 15px transparent;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--primary);
-            box-shadow: 0 0 25px var(--primary-glow);
-            transform: scale(1.02);
-        }
-
-        .btn-primary {
-            background: var(--gradient-1);
-            border: none;
-            color: white;
-            padding: 0.8rem 2.2rem;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.25s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            box-shadow: 0 10px 20px -5px rgba(168, 85, 247, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 25px -5px var(--primary-glow);
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 6rem 2rem 4rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content {
-            max-width: 1000px;
-            text-align: center;
-        }
-
-        .hero-badge {
-            background: rgba(168, 85, 247, 0.15);
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            border-radius: 60px;
-            padding: 0.5rem 1.5rem;
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--secondary);
-            font-weight: 500;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            backdrop-filter: blur(5px);
-        }
-
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 5.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            background: linear-gradient(to right, #ffffff, #e2d5ff, #c3a0ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1.8rem;
-            filter: drop-shadow(0 0 35px rgba(168, 85, 247, 0.4));
-        }
-
-        .hero-typing {
-            font-size: 1.4rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2.5rem;
-            justify-content: center;
-            margin: 3rem 0;
-        }
-
-        .stat-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--border-glow);
-            border-radius: 20px;
-            padding: 1.2rem 2.2rem;
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .games-section {
-            background: var(--bg-deeper);
-            border-top: 1px solid rgba(168, 85, 247, 0.2);
-            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
-            padding: 6rem 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #fff, #c0b7e8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .games-grid {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .game-tag {
-            background: rgba(20, 23, 31, 0.7);
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            backdrop-filter: blur(4px);
-            padding: 0.8rem 1.6rem;
-            border-radius: 60px;
-            font-weight: 500;
-            color: #e0e0ff;
-            transition: all 0.2s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            font-size: 0.95rem;
-            letter-spacing: 0.2px;
-        }
-
-        .game-tag:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px var(--primary-glow);
-            background: rgba(168, 85, 247, 0.15);
-            color: white;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1300px;
-            margin: 5rem auto 0;
-            padding: 0 2rem;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            border-radius: 28px;
-            padding: 2.5rem 2rem;
-            transition: 0.25s;
-            box-shadow: 0 25px 40px -15px black;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 0%, var(--primary-glow), transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .feature-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-8px);
-        }
-
-        .feature-card:hover::before {
-            opacity: 0.2;
-        }
-
-        .feature-icon {
-            font-size: 2.7rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .script-panel {
-            background: var(--surface);
-            border-radius: 32px;
-            padding: 3rem;
-            max-width: 1000px;
-            margin: 6rem auto;
-            border: 1px solid var(--border-glow);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .script-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.8rem;
-        }
-
-        .script-header i {
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        .script-header span {
-            font-family: 'Space Grotesk', monospace;
-            font-weight: 600;
-            color: var(--secondary);
-        }
-
-        .code-block {
-            background: #0c0f17;
-            border-radius: 24px;
-            padding: 1.8rem;
-            border: 1px solid #2f2b44;
-            font-family: 'Space Grotesk', monospace;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .code-block code {
-            color: #b7e4ff;
-            letter-spacing: 0.5px;
-            word-break: break-word;
-        }
-
-        .copy-btn {
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .copy-btn:hover {
-            background: var(--primary);
-            box-shadow: 0 0 30px var(--primary-glow);
-        }
-
-        .faq-section {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            padding: 2rem 2rem 5rem;
-        }
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.8rem;
-        }
-
-        .faq-item {
-            background: rgba(20, 23, 31, 0.4);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(168, 85, 247, 0.15);
-            border-radius: 22px;
-            padding: 2rem;
-        }
-
-        .faq-question {
-            font-weight: 700;
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: white;
-        }
-
-        .faq-answer {
-            color: var(--text-secondary);
-        }
-
-        footer {
-            background: var(--bg-deeper);
-            border-top: 1px solid rgba(168, 85, 247, 0.2);
-            padding: 3rem 2rem 2rem;
-        }
-
-        .footer-inner {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 3rem;
-        }
-
-        .footer-copyright {
-            text-align: center;
-            color: var(--text-secondary);
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .social-links a {
-            color: var(--text-secondary);
-            font-size: 1.4rem;
-            margin-right: 1.5rem;
-            transition: 0.2s;
-        }
-
-        .social-links a:hover {
-            color: var(--primary);
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--surface);
-            border: 1px solid var(--primary);
-            border-radius: 60px;
-            padding: 1rem 2.5rem;
-            color: white;
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-            z-index: 999;
-            transition: opacity 0.3s;
-            opacity: 0;
-            pointer-events: none;
-            box-shadow: 0 0 40px var(--primary-glow);
-        }
-
-        .toast.show {
-            opacity: 1;
-        }
-
-        .mobile-menu {
-            display: none;
-        }
-
-        @media (max-width: 800px) {
-            .nav-links { display: none; }
-            .mobile-menu { display: block; }
-            .hero h1 { font-size: 3.2rem; }
-            .hero-stats { flex-direction: column; align-items: center; }
-            .stat-item { width: 80%; }
-        }
-    </style>
 </head>
 <body>
-    <div class="orb-bg"></div>
+    <!-- ========== ЗВЁЗДНЫЙ ФОН ========== -->
+    <div class="stars-container" id="starsContainer"></div>
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
+    <div class="nebula nebula-4"></div>
 
-    <nav class="navbar">
+    <!-- ========== SHOOTING STARS ========== -->
+    <div class="shooting-stars">
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+    </div>
+
+    <!-- ========== CURSOR GLOW ========== -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ========== НАВИГАЦИЯ ========== -->
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-star"></i> Solara Hub
-            </div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#games">Games</a>
-                <a href="#features">Features</a>
-                <a href="#faq">FAQ</a>
-                <a href="#community">Community</a>
-            </div>
-            <button class="btn-outline" onclick="window.open('https://discord.gg/DPCKQRJmdF', '_blank')">
-                <i class="fab fa-discord"></i> Discord
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">⭐</span>
+                <span class="logo-text">Solara Hub</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#games" class="nav-link">Games</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="#community" class="nav-link">Community</a></li>
+            </ul>
+            <a href="https://discord.gg/DPCKQRJmdF" class="nav-cta" target="_blank">
+                <span>Discord</span>
+                <i class="fab fa-discord"></i>
+            </a>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-            <button class="mobile-menu btn-outline" style="border:none;">☰</button>
         </div>
     </nav>
 
+    <!-- ========== HERO SECTION ========== -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-star" style="margin-right: 8px;"></i> BEST ROBLOX SCRIPT HUB
+            <div class="hero-badge" data-aos="fade-down">
+                <span class="badge-dot"></span>
+                <span>Best Roblox Script Hub</span>
             </div>
-            <h1>SOLARA HUB</h1>
-            <div class="hero-typing">
+
+            <h1 class="hero-title" data-aos="fade-up">
+                <span class="title-line">Welcome to</span>
+                <span class="title-main">
+                    <span class="letter" style="--i:0">S</span>
+                    <span class="letter" style="--i:1">o</span>
+                    <span class="letter" style="--i:2">l</span>
+                    <span class="letter" style="--i:3">a</span>
+                    <span class="letter" style="--i:4">r</span>
+                    <span class="letter" style="--i:5">a</span>
+                    <span class="letter" style="--i:6"> </span>
+                    <span class="letter" style="--i:7">H</span>
+                    <span class="letter" style="--i:8">u</span>
+                    <span class="letter" style="--i:9">b</span>
+                </span>
+            </h1>
+
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
                 The Ultimate Roblox Experience - Unleash the power of top-tier scripting with our advanced scripthub featuring 450+ games support and 1300+ scripts
+            </p>
+
+            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
+                <a href="https://discord.gg/DPCKQRJmdF" class="btn btn-primary" target="_blank">
+                    <span class="btn-bg"></span>
+                    <span class="btn-content">
+                        <i class="fab fa-discord"></i>
+                        <span>Discord</span>
+                    </span>
+                </a>
+                <a href="get-key.html" class="btn btn-secondary">
+                    <span class="btn-content">
+                        <i class="fas fa-key"></i>
+                        <span>Get Key</span>
+                    </span>
+                </a>
+                <button class="btn btn-secondary" id="copyScriptFromHero">
+                    <span class="btn-content">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy Script</span>
+                    </span>
+                </button>
             </div>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <button class="btn-primary" id="copyScriptFromHero"><i class="fas fa-copy"></i> Copy Script</button>
-                <a href="get-key.html" class="btn-outline" style="text-decoration: none;"><i class="fas fa-key"></i> Get Key</a>
-                <button class="btn-outline" onclick="window.location.href='#games'"><i class="fas fa-gamepad"></i> Games</button>
+
+            <div class="hero-stats" data-aos="fade-up" data-aos-delay="600">
+                <div class="hero-stat">
+                    <span class="stat-number" data-target="450">0</span>
+                    <span class="stat-label">Games Supported</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="stat-number" data-target="1300">0</span>
+                    <span class="stat-label">Scripts</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="stat-number" data-target="30">0</span>
+                    <span class="stat-label">Monthly Updates</span>
+                </div>
             </div>
-            <div class="hero-stats">
-                <div class="stat-item"><span class="stat-number">450+</span> <div class="stat-label">games</div></div>
-                <div class="stat-item"><span class="stat-number">1300+</span> <div class="stat-label">scripts</div></div>
-                <div class="stat-item"><span class="stat-number">Monthly</span> <div class="stat-label">updates</div></div>
+        </div>
+
+        <!-- Floating UI Preview (можно оставить как стильный элемент) -->
+        <div class="hero-preview" data-aos="zoom-in" data-aos-delay="500">
+            <div class="preview-window">
+                <div class="preview-titlebar">
+                    <div class="preview-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="preview-title">✦ Solara Hub</span>
+                </div>
+                <div class="preview-body">
+                    <div class="preview-sidebar">
+                        <div class="preview-nav-item active">⚡</div>
+                        <div class="preview-nav-item">📜</div>
+                        <div class="preview-nav-item">ℹ</div>
+                        <div class="preview-nav-item">⚙</div>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-code">
+                            <span class="code-comment">-- Solara Hub Loader</span><br>
+                            <span class="code-keyword">loadstring</span>(game:<span class="code-func">HttpGet</span>(<span class="code-string">'https://solarahub.space/SH.lua'</span>))()<br>
+                            <span class="code-cursor">|</span>
+                        </div>
+                        <div class="preview-buttons">
+                            <span class="preview-btn">⚡ Execute</span>
+                            <span class="preview-btn">📋 Copy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-glow"></div>
+        </div>
+
+        <div class="hero-scroll">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
             </div>
         </div>
     </section>
 
+    <!-- ========== FEATURES SECTION ========== (старый текст) -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">✦ Features</span>
+                <h2 class="section-title">Why Choose <span class="gradient-text">Solara Hub</span>?</h2>
+                <p class="section-subtitle">Solara Hub revolutionizes your Roblox experience with cutting-edge technology</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="feature-icon">
+                        <div class="icon-glow"></div>
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>450+ Games Supported</h3>
+                    <p>Massive library of supported games with regular additions and updates to keep you ahead of the game.</p>
+                    <div class="feature-decoration"></div>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon cyan">
+                        <div class="icon-glow cyan"></div>
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <h3>1300+ Scripts</h3>
+                    <p>Huge collection of powerful, optimized scripts for every need, from basic utilities to advanced features.</p>
+                    <div class="feature-decoration"></div>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon pink">
+                        <div class="icon-glow pink"></div>
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized for maximum performance and minimal lag, ensuring smooth operation even on lower-end devices.</p>
+                    <div class="feature-decoration"></div>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="feature-icon green">
+                        <div class="icon-glow green"></div>
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Undetectable</h3>
+                    <p>Advanced obfuscation and protection methods to ensure your account stays safe while using our scripts.</p>
+                    <div class="feature-decoration"></div>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon orange">
+                        <div class="icon-glow orange"></div>
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Monthly Updates</h3>
+                    <p>Major updates every month with new scripts, features, and game support to keep you ahead of the competition.</p>
+                    <div class="feature-decoration"></div>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon purple">
+                        <div class="icon-glow purple"></div>
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Support</h3>
+                    <p>Join our active Discord community for help, suggestions, and to connect with other users.</p>
+                    <div class="feature-decoration"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GAMES SECTION (динамическая загрузка с GitHub) ========== -->
     <section class="games-section" id="games">
-        <div class="section-header">
-            <h2><i class="fas fa-cubes"></i> supported games</h2>
-            <p>Massive library of supported games with regular additions and updates</p>
-        </div>
-        <div class="games-grid" id="gamesGrid"></div>
-        <div style="text-align: center; margin-top: 2rem;" id="gamesLoading">Loading game list from repository...</div>
-    </section>
-
-    <section id="features" style="padding: 4rem 0;">
-        <div class="section-header">
-            <h2>Why Choose Solara Hub?</h2>
-            <p>Solara Hub revolutionizes your Roblox experience with cutting-edge technology</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-gamepad"></i></div>
-                <h3>450+ Games Supported</h3>
-                <p>Massive library of supported games with regular additions and updates to keep you ahead of the game.</p>
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">✦ Supported Games</span>
+                <h2 class="section-title">Massive Library of <span class="gradient-text">Games</span></h2>
+                <p class="section-subtitle">We support 450+ games and counting — here are some of them:</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-file-code"></i></div>
-                <h3>1300+ Scripts</h3>
-                <p>Huge collection of powerful, optimized scripts for every need, from basic utilities to advanced features.</p>
+            <div class="games-grid" id="gamesGrid" data-aos="fade-up">
+                <!-- Заполняется скриптом -->
             </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                <h3>Lightning Fast</h3>
-                <p>Optimized for maximum performance and minimal lag, ensuring smooth operation even on lower-end devices.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>Undetectable</h3>
-                <p>Advanced obfuscation and protection methods to ensure your account stays safe while using our scripts.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-                <h3>Monthly Updates</h3>
-                <p>Major updates every month with new scripts, features, and game support to keep you ahead of the competition.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-users"></i></div>
-                <h3>Community Support</h3>
-                <p>Join our active Discord community for help, suggestions, and to connect with other users.</p>
-            </div>
+            <div style="text-align: center; margin-top: 2rem;" id="gamesLoading">Loading game list from repository...</div>
         </div>
     </section>
 
-    <div class="script-panel">
-        <div class="script-header">
-            <i class="fas fa-terminal"></i>
-            <span>⚡ GET STARTED NOW</span>
-        </div>
-        <div class="code-block">
-            <code id="scriptText">loadstring(game:HttpGet('https://solarahub.space/SH.lua'))()</code>
-            <button class="copy-btn" id="copyScriptBtn"><i class="fas fa-copy"></i> copy</button>
-        </div>
-    </div>
-
-    <section id="faq" style="padding: 2rem 0 5rem;">
-        <div class="section-header">
-            <h2>Frequently Asked Questions</h2>
-            <p>Got questions? We've got answers.</p>
-        </div>
-        <div class="faq-section">
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">Is Solara Hub safe to use?</div>
-                    <div class="faq-answer">Yes, Solara Hub uses advanced protection methods to ensure your account stays safe. However, as with any third-party software, use at your own risk.</div>
+    <!-- ========== SCRIPT PANEL (как в старом сайте) ========== -->
+    <section class="download-section" id="get-started" style="padding: 60px 0;">
+        <div class="container">
+            <div class="download-card" data-aos="fade-up">
+                <div class="download-bg">
+                    <div class="download-nebula"></div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">Which platforms are supported?</div>
-                    <div class="faq-answer">Solara Hub works on all platforms that support script execution with proper environment setup and compatibility.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Do I need to pay for Solara Hub?</div>
-                    <div class="faq-answer">No, Solara Hub is completely free to use. We believe in providing powerful tools to everyone without paywalls.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How do I get support?</div>
-                    <div class="faq-answer">Join our Discord server for instant help from our community and development team. We're always happy to assist!</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How often is Solara Hub updated?</div>
-                    <div class="faq-answer">We release major updates every month with new scripts, features, and game support to keep you ahead.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Can I request new scripts or features?</div>
-                    <div class="faq-answer">Absolutely! We welcome suggestions in our Discord server. Many of our features were implemented based on community feedback.</div>
+                <div class="download-content">
+                    <span class="download-badge">✦ Get Started Now</span>
+                    <h2>One Script to Rule Them All</h2>
+                    <p>Copy the script below, paste into your executor and experience Solara Hub</p>
+                    <div class="script-box" style="background: rgba(0,0,0,0.4); border-radius: 16px; padding: 20px; margin: 30px 0; border: 1px solid var(--border);">
+                        <code style="display: block; font-family: 'JetBrains Mono'; font-size: 16px; color: var(--cyan); word-break: break-all;" id="scriptCode">
+                            loadstring(game:HttpGet('https://solarahub.space/SH.lua'))()
+                        </code>
+                    </div>
+                    <div class="download-buttons">
+                        <button class="btn btn-download" id="copyScriptBtn">
+                            <span class="btn-bg"></span>
+                            <span class="btn-content">
+                                <i class="fas fa-copy"></i>
+                                <div class="btn-text">
+                                    <span class="btn-small">click to</span>
+                                    <span class="btn-large">Copy Script</span>
+                                </div>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="download-info">
+                        <span><i class="fas fa-check"></i> Free forever</span>
+                        <span><i class="fas fa-check"></i> No key required</span>
+                        <span><i class="fas fa-check"></i> Instant update</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="community" style="padding: 2rem 2rem 4rem;">
-        <div class="section-header">
-            <h2>Join Our Community</h2>
-            <p>Become part of the growing Solara Hub community! Get support, share experiences, and stay updated.</p>
-        </div>
-        <div style="text-align: center;">
-            <button class="btn-primary" onclick="window.open('https://discord.gg/DPCKQRJmdF', '_blank')"><i class="fab fa-discord"></i> Join Discord Server</button>
+    <!-- ========== FAQ SECTION (старый текст) ========== -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">✦ FAQ</span>
+                <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+            </div>
+
+            <div class="faq-list" data-aos="fade-up">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Is Solara Hub safe to use?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, Solara Hub uses advanced protection methods to ensure your account stays safe. However, as with any third-party software, use at your own risk.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Which platforms are supported?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Solara Hub works on all platforms that support script execution with proper environment setup and compatibility.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do I need to pay for Solara Hub?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, Solara Hub is completely free to use. We believe in providing powerful tools to everyone without paywalls.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do I get support?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Join our Discord server for instant help from our community and development team. We're always happy to assist!</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How often is Solara Hub updated?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We release major updates every month with new scripts, features, and game support to keep you ahead.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I request new scripts or features?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We welcome suggestions in our Discord server. Many of our features were implemented based on community feedback.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-inner">
-            <div style="max-width: 300px;">
-                <div class="logo" style="font-size: 2rem; margin-bottom: 1rem;"><i class="fas fa-star"></i> Solara Hub</div>
-                <p style="color: var(--text-secondary);">The ultimate Roblox scripting experience with 450+ games support and 1300+ scripts.</p>
-                <div class="social-links" style="margin-top: 2rem;">
-                    <a href="https://www.youtube.com/@samuraa1"><i class="fab fa-youtube"></i></a>
-                    <a href="https://github.com/samuraa1"><i class="fab fa-github"></i></a>
-                    <a href="https://discord.gg/DPCKQRJmdF"><i class="fab fa-discord"></i></a>
+    <!-- ========== COMMUNITY SECTION ========== -->
+    <section class="download-section" id="community" style="padding: 60px 0;">
+        <div class="container">
+            <div class="download-card" data-aos="fade-up">
+                <div class="download-content">
+                    <span class="download-badge">✦ Community</span>
+                    <h2>Join Our Discord</h2>
+                    <p>Become part of the growing Solara Hub community! Get support, share experiences, and stay updated.</p>
+                    <div class="download-buttons">
+                        <a href="https://discord.gg/DPCKQRJmdF" class="btn btn-download" target="_blank">
+                            <span class="btn-bg"></span>
+                            <span class="btn-content">
+                                <i class="fab fa-discord"></i>
+                                <div class="btn-text">
+                                    <span class="btn-small">join now</span>
+                                    <span class="btn-large">Discord Server</span>
+                                </div>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div>
-                <h4 style="margin-bottom: 1rem;">Quick Links</h4>
-                <ul style="list-style: none; color: var(--text-secondary);">
-                    <li style="margin-bottom: 0.5rem;"><a href="#home" style="color: inherit; text-decoration: none;">Home</a></li>
-                    <li style="margin-bottom: 0.5rem;"><a href="#features" style="color: inherit; text-decoration: none;">Features</a></li>
-                    <li style="margin-bottom: 0.5rem;"><a href="#faq" style="color: inherit; text-decoration: none;">FAQ</a></li>
-                    <li style="margin-bottom: 0.5rem;"><a href="#community" style="color: inherit; text-decoration: none;">Community</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 1rem;">Resources</h4>
-                <ul style="list-style: none; color: var(--text-secondary);">
-                    <li style="margin-bottom: 0.5rem;"><a href="get-key.html" style="color: inherit; text-decoration: none;">Get Key</a></li>
-                    <li style="margin-bottom: 0.5rem;"><a href="https://discord.gg/DPCKQRJmdF" style="color: inherit; text-decoration: none;">Discord</a></li>
-                </ul>
-            </div>
         </div>
-        <div class="footer-copyright">
-            © 2026 Solara Hub. All rights reserved. This project is for educational purposes only. Use at your own risk.
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-icon">⭐</span>
+                        <span>Solara Hub</span>
+                    </div>
+                    <p>The ultimate Roblox scripting experience with 450+ games support and 1300+ scripts.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.youtube.com/@samuraa1" class="social-link" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://github.com/samuraa1" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://discord.gg/DPCKQRJmdF" class="social-link" target="_blank"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#games">Games</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#community">Community</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <a href="get-key.html">Get Key</a>
+                    <a href="https://discord.gg/DPCKQRJmdF" target="_blank">Discord</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Solara Hub. All rights reserved. This project is for educational purposes only. Use at your own risk.</p>
+            </div>
         </div>
     </footer>
 
-    <div class="toast" id="liveToast">✨ Script copied to clipboard!</div>
+    <!-- Toast для копирования -->
+    <div class="toast" id="copyToast">✨ Script copied to clipboard!</div>
 
-    <script>
-        (function() {
-            const gamesGrid = document.getElementById('gamesGrid');
-            const loadingSpan = document.getElementById('gamesLoading');
-            
-            fetch('https://raw.githubusercontent.com/samuraa1/Solara-Hub/refs/heads/main/Games', { cache: "no-store" })
-                .then(res => {
-                    if (!res.ok) throw new Error('Network error');
-                    return res.text();
-                })
-                .then(data => {
-                    const games = data.split('\n').map(line => line.trim()).filter(name => name.length > 0);
-                    loadingSpan.style.display = 'none';
-                    
-                    if (games.length === 0) {
-                        gamesGrid.innerHTML = '<div style="color:gray">Games list is empty</div>';
-                        return;
-                    }
-                    
-                    games.slice(0, 120).forEach(game => {
-                        const tag = document.createElement('span');
-                        tag.className = 'game-tag';
-                        tag.textContent = game;
-                        gamesGrid.appendChild(tag);
-                    });
-                    
-                    if (games.length > 120) {
-                        const more = document.createElement('span');
-                        more.className = 'game-tag';
-                        more.textContent = `and ${games.length - 120} more...`;
-                        gamesGrid.appendChild(more);
-                    }
-                })
-                .catch(err => {
-                    loadingSpan.textContent = 'Could not load game list, but we support 450+ games!';
-                    console.warn(err);
-                    const fallbackGames = ['Adopt Me!', 'Brookhaven', 'Tower of Hell', 'Jailbreak', 'Blox Fruits', 'Pet Simulator X', 'Arsenal', 'MM2', 'Phantom Forces', 'Doors', 'Flee the Facility', 'Slap Battles', 'BedWars', 'Shindo Life'];
-                    fallbackGames.forEach(g => {
-                        const tag = document.createElement('span');
-                        tag.className = 'game-tag';
-                        tag.textContent = g;
-                        gamesGrid.appendChild(tag);
-                    });
-                });
-
-            function copyScript() {
-                const script = document.getElementById('scriptText').innerText;
-                navigator.clipboard.writeText(script).then(() => {
-                    const toast = document.getElementById('liveToast');
-                    toast.classList.add('show');
-                    setTimeout(() => toast.classList.remove('show'), 1800);
-                });
-            }
-
-            document.getElementById('copyScriptBtn').addEventListener('click', copyScript);
-            document.getElementById('copyScriptFromHero').addEventListener('click', copyScript);
-
-            document.querySelector('.mobile-menu')?.addEventListener('click', ()=> {
-                alert('Check our Discord server for mobile navigation!');
-            });
-
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const id = this.getAttribute('href');
-                    if(id === '#') return;
-                    const target = document.querySelector(id);
-                    if(target) target.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-        })();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
